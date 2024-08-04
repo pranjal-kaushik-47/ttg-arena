@@ -14,6 +14,9 @@ type Environment struct {
 	ScreenHeight int
 }
 
+// how to create square tiles in ebitan?
+// find a easier way to design a map
+
 func (e *Environment) Draw(screen *ebiten.Image, metaData common.GameMetaData) error {
 	currentLevel := metaData.Level
 	// screenWidth, screenHeight := metaData.ScreenWidth, metaData.ScreenHeight

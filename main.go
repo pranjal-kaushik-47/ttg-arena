@@ -10,6 +10,17 @@ import (
 	"github.com/hajimehoshi/ebiten/v2"
 )
 
+// TODO:
+// 0. enemy AI (better logic ;P)
+// 1. map design
+// 2. hostile enemies
+// 3. room transition
+// 4. fog of war
+// 5. z axis movement
+// 6. hiding
+// 7. ablities*
+// 8. Boss fight
+
 type Game struct {
 	Player      *entity.Player
 	Enemies     []*entity.Enemy

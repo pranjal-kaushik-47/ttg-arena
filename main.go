@@ -13,11 +13,17 @@ import (
 // TODO:
 // 0. enemy AI (better logic ;P)
 // 1. map design
+
+// #### add art and animation ####
+
 // 2. hostile enemies
 // 3. room transition
 // 4. fog of war
 // 5. z axis movement
 // 6. hiding
+
+// ##### add music ####
+
 // 7. ablities*
 // 8. Boss fight
 

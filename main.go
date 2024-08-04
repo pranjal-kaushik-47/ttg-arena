@@ -17,6 +17,7 @@ import (
 // #### add art and animation ####
 
 // 2. hostile enemies
+// 2.5 enemy from docile to hostile
 // 3. room transition
 // 4. fog of war
 // 5. z axis movement

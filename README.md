@@ -2,9 +2,8 @@
   - pixal art
   - caves of qud 
   - blasphemous
-<source media="https://www.cavesofqud.com/img/barathrums-study.png">
     
-
+![alt text]([http://url/to/img.png](https://www.cavesofqud.com/img/barathrums-study.png))
 
 
 game idea

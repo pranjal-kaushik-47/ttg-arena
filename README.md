@@ -1,3 +1,12 @@
+  Art style inspirations:
+  - pixal art
+  - caves of qud 
+  - blasphemous
+<source media="https://www.cavesofqud.com/img/barathrums-study.png">
+    
+
+
+
 game idea
 
 - a roguelike tag game
@@ -7,13 +16,10 @@ game idea
 - can see only in light
 - map is dark
 - when hostile should surviveand find the exit to go back one level
-- learn powerup by defeating bosses (need to think about bosses mechanics)..... bosses are hidden and not mandatory but enemies keeps getting harder, 2-3 levels after boss level enemies will have a chance to have the boss's abilities and the only way to get that abality is to go back a level and search for the boss
+- learn powerup by defeating bosses
+- bosses are hidden and not mandatory but enemies keeps getting harder, 2-3 levels after boss level enemies will have a chance to have the boss's abilities and the only way to get that abality is to go back a level and search for the boss
 
 
-  Art style inspirations:
-  - pixal art
-  - caves of qud 
-  - blasphemous
-
+- Boss abalities will include stuff like teliportation, reducing players eyesight, AOE attacks, time manipulation etc.
 
   

@@ -1,0 +1,11 @@
+[
+    {
+        "vertices": [
+            {"DstX": 50, "DstY": 50, "ColorR": 1, "ColorG": 255, "ColorB": 1, "ColorA": 1},
+            {"DstX": 75, "DstY": 50, "ColorR": 1, "ColorG": 255, "ColorB": 1, "ColorA": 1},
+            {"DstX": 62.5, "DstY": 75, "ColorR": 1, "ColorG": 255, "ColorB": 1, "ColorA": 1}
+        ],
+        "indices": [0, 1, 2],
+        "color": {"R": 255, "G": 0, "B": 0, "A": 1}
+    }
+]

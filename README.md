@@ -3,7 +3,7 @@
   - caves of qud 
   - blasphemous
     
-![alt text]([https://www.cavesofqud.com/img/barathrums-study.png])
+![alt text](https://www.cavesofqud.com/img/barathrums-study.png)
 
 
 game idea

@@ -15,6 +15,10 @@ type Enemy struct {
 	Eyesight float64
 }
 
+// movement logic update for the enemy to not get stuck in corners:
+// if enemy position has not changed since last frame and player is close
+// move away from last point and the player
+
 func (e *Enemy) Reset(env *Environment) error {
 	image, _, err := ebitenutil.NewImageFromFile("resources\\images\\enemy.png")
 	if err != nil {

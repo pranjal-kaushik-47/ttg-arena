@@ -95,7 +95,7 @@ func main() {
 
 	// window setting
 	ebiten.SetWindowSize(g.ScreenWidth, g.ScreenHeight)
-	ebiten.SetWindowTitle("Tag Game V2")
+	ebiten.SetWindowTitle("TTG Arena")
 	ebiten.SetWindowResizingMode(ebiten.WindowResizingModeEnabled)
 	f, err := os.Open("resources\\images\\player.png")
 	if err != nil {

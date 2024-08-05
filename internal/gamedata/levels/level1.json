@@ -1,48 +1,51 @@
 [
     {
-        "vertices": [
-            {"DstX": 0, "DstY": 0, "ColorR": 1, "ColorG": 255, "ColorB": 1, "ColorA": 1},
-            {"DstX": 10, "DstY": 0, "ColorR": 1, "ColorG": 255, "ColorB": 1, "ColorA": 1},
-            {"DstX": 0, "DstY": 100, "ColorR": 1, "ColorG": 255, "ColorB": 1, "ColorA": 1}
-        ],
-        "indices": [0, 1, 2],
-        "color": {"R": 255, "G": 0, "B": 0, "A": 1}
-    },
-    {
-        "vertices": [
-            {"DstX": 0, "DstY": 100, "ColorR": 1, "ColorG": 255, "ColorB": 1, "ColorA": 1},
-            {"DstX": 10, "DstY": 200, "ColorR": 1, "ColorG": 255, "ColorB": 1, "ColorA": 1},
-            {"DstX": 0, "DstY": 200, "ColorR": 1, "ColorG": 255, "ColorB": 1, "ColorA": 1}
-        ],
-        "indices": [0, 1, 2],
-        "color": {"R": 255, "G": 0, "B": 0, "A": 1}
-    },
-    {
-        "vertices": [
-            {"DstX": 0, "DstY": 200, "ColorR": 1, "ColorG": 255, "ColorB": 1, "ColorA": 1},
-            {"DstX": 10, "DstY": 200, "ColorR": 1, "ColorG": 255, "ColorB": 1, "ColorA": 1},
-            {"DstX": 0, "DstY": 300, "ColorR": 1, "ColorG": 255, "ColorB": 1, "ColorA": 1}
-        ],
-        "indices": [0, 1, 2],
-        "color": {"R": 255, "G": 0, "B": 0, "A": 1}
-    },
-    {
-        "vertices": [
-            {"DstX": 0, "DstY": 300, "ColorR": 1, "ColorG": 255, "ColorB": 1, "ColorA": 1},
-            {"DstX": 10, "DstY": 400, "ColorR": 1, "ColorG": 255, "ColorB": 1, "ColorA": 1},
-            {"DstX": 0, "DstY": 400, "ColorR": 1, "ColorG": 255, "ColorB": 1, "ColorA": 1}
-        ],
-        "indices": [0, 1, 2],
-        "color": {"R": 255, "G": 0, "B": 0, "A": 1}
+        "sprite": {
+            "posx": 0,
+            "posy": 0,
+            "image": null,
+            "imageSource": null,
+            "boundingbox": {
+                "vertices": [
+                    {
+                        "DstX": 0,
+                        "DstY": 0,
+                        "ColorR": 1,
+                        "ColorG": 255,
+                        "ColorB": 1,
+                        "ColorA": 1
+                    },
+                    {
+                        "DstX": 10,
+                        "DstY": 0,
+                        "ColorR": 1,
+                        "ColorG": 255,
+                        "ColorB": 1,
+                        "ColorA": 1
+                    },
+                    {
+                        "DstX": 0,
+                        "DstY": 100,
+                        "ColorR": 1,
+                        "ColorG": 255,
+                        "ColorB": 1,
+                        "ColorA": 1
+                    }
+                ],
+                "indices": [
+                    0,
+                    1,
+                    2
+                ],
+                "color": {
+                    "r": 255,
+                    "g": 0,
+                    "b": 0,
+                    "a": 1
+                }
+            },
+            "isactive": true
+        }
     }
-    ,
-    {
-        "vertices": [
-            {"DstX": 0, "DstY": 400, "ColorR": 1, "ColorG": 255, "ColorB": 1, "ColorA": 1},
-            {"DstX": 10, "DstY": 400, "ColorR": 1, "ColorG": 255, "ColorB": 1, "ColorA": 1},
-            {"DstX": 0, "DstY": 500, "ColorR": 1, "ColorG": 255, "ColorB": 1, "ColorA": 1}
-        ],
-        "indices": [0, 1, 2],
-        "color": {"R": 255, "G": 0, "B": 0, "A": 1}
-    }
+    
 ]

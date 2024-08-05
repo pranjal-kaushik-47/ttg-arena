@@ -19,7 +19,7 @@ type Enemy struct {
 // if enemy position has not changed since last frame and player is close
 // move away from last point and the player
 
-func (e *Enemy) Reset(env *Environment) error {
+func (e *Enemy) Reset(env *Environment, metaData *common.GameMetaData) error {
 	image, _, err := ebitenutil.NewImageFromFile("resources\\images\\enemy.png")
 	if err != nil {
 		return err
@@ -29,8 +29,8 @@ func (e *Enemy) Reset(env *Environment) error {
 	}
 	e.Speed = 1 //float64(rand.IntN(3))
 	e.Sprite.Image = image
-	e.Sprite.PosX = float64(rand.IntN(env.ScreenWidth - 15))
-	e.Sprite.PosY = float64(rand.IntN(env.ScreenHeight - 15))
+	e.Sprite.PosX = float64(rand.IntN(metaData.ScreenWidth - 15))
+	e.Sprite.PosY = float64(rand.IntN(metaData.ScreenHeight - 15))
 	e.Sprite.IsActive = true
 	e.Eyesight = 100 //float64(rand.IntN(100))
 	e.Sprite.BoundingBox = Polygon{
@@ -44,7 +44,7 @@ func (e *Enemy) Reset(env *Environment) error {
 		Color:   Color{R: 255, G: 0, B: 0, A: 1},
 	}
 	if env.Colliding("enemy", e.Sprite.BoundingBox) {
-		e.Reset(env)
+		e.Reset(env, metaData)
 	}
 	return nil
 }

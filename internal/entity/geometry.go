@@ -17,7 +17,7 @@ type Polygon struct {
 	Color    Color           `json:"color"`
 }
 
-func (p *Polygon) Draw(screen *ebiten.Image, currentLevel int) error {
+func (p *Polygon) Draw(screen *ebiten.Image) error {
 	op := &ebiten.DrawTrianglesOptions{}
 	op.Address = ebiten.AddressUnsafe
 	img := ebiten.NewImage(1, 1) // A 1x1 image to be used as a placeholder

@@ -18,11 +18,12 @@ func (c Color) ToColor() color.Color {
 }
 
 type Sprite struct {
-	PosX        float64
-	PosY        float64
-	Image       *ebiten.Image
-	BoundingBox Polygon
-	IsActive    bool
+	PosX        float64       `json:"posx"`
+	PosY        float64       `json:"posy"`
+	Image       *ebiten.Image `json:"image"`
+	ImageSource *string       `json:"imagesource"`
+	BoundingBox Polygon       `json:"boundingbox"`
+	IsActive    bool          `json:"isactive"`
 }
 
 func (s *Sprite) Update() error {
@@ -33,9 +34,16 @@ func (s *Sprite) Draw(screen *ebiten.Image) error {
 	if s.IsActive {
 		opts := &ebiten.DrawImageOptions{}
 		opts.GeoM.Translate(s.PosX, s.PosY)
-		screen.DrawImage(s.Image, opts)
+		if s.Image != nil {
+			screen.DrawImage(s.Image, opts)
+		}
+
 	}
 	return nil
+}
+
+func (s *Sprite) AppluBoundingBox(polygon Polygon) {
+	s.BoundingBox = polygon
 }
 
 func (s *Sprite) BoundingBoxShiftRight(shiftby float64) Polygon {

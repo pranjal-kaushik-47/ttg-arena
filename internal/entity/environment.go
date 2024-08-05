@@ -18,14 +18,14 @@ type Environment struct {
 }
 
 // how to create square tiles in ebitan?
-// find a easier way to design a map
+// find a easier way to design a map + create a level designer
 
 func (e *Environment) Draw(screen *ebiten.Image, metaData common.GameMetaData) error {
 	// screenWidth, screenHeight := metaData.ScreenWidth, metaData.ScreenHeight
 	// e.buildWalls(currentLevel, screenWidth, screenHeight)
 	for _, wall := range e.Walls {
 		wall.Sprite.Draw(screen)
-		//wall.Sprite.BoundingBox.Draw(screen)
+		wall.Sprite.BoundingBox.Draw(screen)
 
 	}
 	return nil

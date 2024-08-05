@@ -24,8 +24,16 @@
                         "ColorA": 1
                     },
                     {
+                        "DstX": 10,
+                        "DstY": 10,
+                        "ColorR": 1,
+                        "ColorG": 255,
+                        "ColorB": 1,
+                        "ColorA": 1
+                    },
+                    {
                         "DstX": 0,
-                        "DstY": 100,
+                        "DstY": 10,
                         "ColorR": 1,
                         "ColorG": 255,
                         "ColorB": 1,
@@ -35,7 +43,246 @@
                 "indices": [
                     0,
                     1,
-                    2
+                    2,
+                    2,
+                    3,
+                    0
+                ],
+                "color": {
+                    "r": 255,
+                    "g": 0,
+                    "b": 0,
+                    "a": 1
+                }
+            },
+            "isactive": true
+        }
+    },
+    {
+        "sprite": {
+            "posx": 10,
+            "posy": 0,
+            "image": null,
+            "imageSource": null,
+            "boundingbox": {
+                "vertices": [
+                    {
+                        "DstX": 10,
+                        "DstY": 0,
+                        "ColorR": 1,
+                        "ColorG": 255,
+                        "ColorB": 1,
+                        "ColorA": 1
+                    },
+                    {
+                        "DstX": 20,
+                        "DstY": 0,
+                        "ColorR": 1,
+                        "ColorG": 255,
+                        "ColorB": 1,
+                        "ColorA": 1
+                    },
+                    {
+                        "DstX": 20,
+                        "DstY": 10,
+                        "ColorR": 1,
+                        "ColorG": 255,
+                        "ColorB": 1,
+                        "ColorA": 1
+                    },
+                    {
+                        "DstX": 10,
+                        "DstY": 10,
+                        "ColorR": 1,
+                        "ColorG": 255,
+                        "ColorB": 1,
+                        "ColorA": 1
+                    }
+                ],
+                "indices": [
+                    0,
+                    1,
+                    2,
+                    2,
+                    3,
+                    0
+                ],
+                "color": {
+                    "r": 255,
+                    "g": 0,
+                    "b": 0,
+                    "a": 1
+                }
+            },
+            "isactive": true
+        }
+    },
+    {
+        "sprite": {
+            "posx": 20,
+            "posy": 0,
+            "image": null,
+            "imageSource": null,
+            "boundingbox": {
+                "vertices": [
+                    {
+                        "DstX": 20,
+                        "DstY": 0,
+                        "ColorR": 1,
+                        "ColorG": 255,
+                        "ColorB": 1,
+                        "ColorA": 1
+                    },
+                    {
+                        "DstX": 30,
+                        "DstY": 0,
+                        "ColorR": 1,
+                        "ColorG": 255,
+                        "ColorB": 1,
+                        "ColorA": 1
+                    },
+                    {
+                        "DstX": 30,
+                        "DstY": 10,
+                        "ColorR": 1,
+                        "ColorG": 255,
+                        "ColorB": 1,
+                        "ColorA": 1
+                    },
+                    {
+                        "DstX": 20,
+                        "DstY": 10,
+                        "ColorR": 1,
+                        "ColorG": 255,
+                        "ColorB": 1,
+                        "ColorA": 1
+                    }
+                ],
+                "indices": [
+                    0,
+                    1,
+                    2,
+                    2,
+                    3,
+                    0
+                ],
+                "color": {
+                    "r": 255,
+                    "g": 0,
+                    "b": 0,
+                    "a": 1
+                }
+            },
+            "isactive": true
+        }
+    },
+    {
+        "sprite": {
+            "posx": 0,
+            "posy": 10,
+            "image": null,
+            "imageSource": null,
+            "boundingbox": {
+                "vertices": [
+                    {
+                        "DstX": 0,
+                        "DstY": 10,
+                        "ColorR": 1,
+                        "ColorG": 255,
+                        "ColorB": 1,
+                        "ColorA": 1
+                    },
+                    {
+                        "DstX": 10,
+                        "DstY": 10,
+                        "ColorR": 1,
+                        "ColorG": 255,
+                        "ColorB": 1,
+                        "ColorA": 1
+                    },
+                    {
+                        "DstX": 10,
+                        "DstY": 20,
+                        "ColorR": 1,
+                        "ColorG": 255,
+                        "ColorB": 1,
+                        "ColorA": 1
+                    },
+                    {
+                        "DstX": 0,
+                        "DstY": 20,
+                        "ColorR": 1,
+                        "ColorG": 255,
+                        "ColorB": 1,
+                        "ColorA": 1
+                    }
+                ],
+                "indices": [
+                    0,
+                    1,
+                    2,
+                    2,
+                    3,
+                    0
+                ],
+                "color": {
+                    "r": 255,
+                    "g": 0,
+                    "b": 0,
+                    "a": 1
+                }
+            },
+            "isactive": true
+        }
+    },
+    {
+        "sprite": {
+            "posx": 10,
+            "posy": 10,
+            "image": null,
+            "imageSource": null,
+            "boundingbox": {
+                "vertices": [
+                    {
+                        "DstX": 10,
+                        "DstY": 10,
+                        "ColorR": 1,
+                        "ColorG": 255,
+                        "ColorB": 1,
+                        "ColorA": 1
+                    },
+                    {
+                        "DstX": 20,
+                        "DstY": 10,
+                        "ColorR": 1,
+                        "ColorG": 255,
+                        "ColorB": 1,
+                        "ColorA": 1
+                    },
+                    {
+                        "DstX": 20,
+                        "DstY": 20,
+                        "ColorR": 1,
+                        "ColorG": 255,
+                        "ColorB": 1,
+                        "ColorA": 1
+                    },
+                    {
+                        "DstX": 10,
+                        "DstY": 20,
+                        "ColorR": 1,
+                        "ColorG": 255,
+                        "ColorB": 1,
+                        "ColorA": 1
+                    }
+                ],
+                "indices": [
+                    0,
+                    1,
+                    2,
+                    2,
+                    3,
+                    0
                 ],
                 "color": {
                     "r": 255,
@@ -47,5 +294,4 @@
             "isactive": true
         }
     }
-    
 ]

@@ -8,6 +8,7 @@ import (
 	"tag-game-v2/internal/entity"
 
 	"github.com/hajimehoshi/ebiten/v2"
+	"github.com/hajimehoshi/ebiten/v2/inpututil"
 )
 
 // TODO:
@@ -36,6 +37,8 @@ type Game struct {
 }
 
 func (g *Game) Update() error {
+	x, y := ebiten.CursorPosition()
+	// fmt.Println(x, y, inpututil.IsMouseButtonJustReleased(ebiten.MouseButtonLeft))
 	CurrentEnemyCount := 0
 	for _, enemy := range g.Enemies {
 		if enemy.Sprite.IsActive {
@@ -52,6 +55,9 @@ func (g *Game) Update() error {
 	g.Player.Update(&g.MetaData, g.Environment)
 	for _, enemy := range g.Enemies {
 		enemy.Update(&g.MetaData, g.Player, g.Environment)
+	}
+	if inpututil.IsMouseButtonJustReleased(ebiten.MouseButtonLeft) {
+		g.Environment.BuildSquareWall(x, y, 10, 10)
 	}
 	return nil
 }
@@ -74,7 +80,7 @@ func (g *Game) NewLevel(metaData common.GameMetaData) error {
 
 	// environment
 	g.Environment = &entity.Environment{}
-	g.Environment.BuildWalls(0, metaData.ScreenWidth, metaData.ScreenHeight)
+	// g.Environment.BuildWalls(0, metaData.ScreenWidth, metaData.ScreenHeight)
 
 	// enemies
 	enemies := make([]*entity.Enemy, 0)

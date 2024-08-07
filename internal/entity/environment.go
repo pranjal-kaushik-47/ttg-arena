@@ -110,5 +110,4 @@ func (e *Environment) BuildSquareWall(X, Y, Width, Height int) {
 	}
 
 	e.Walls = append(e.Walls, Wall{Sprite: &Sprite{BoundingBox: square, IsActive: true}})
-	fmt.Println(e.Walls)
 }

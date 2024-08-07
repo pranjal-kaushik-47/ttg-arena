@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"image"
 	"os"
@@ -34,6 +35,9 @@ type Game struct {
 	Enemies     []*entity.Enemy
 	Environment *entity.Environment
 	MetaData    common.GameMetaData
+
+	// Temp Var for level editing
+	BlockSize int
 }
 
 func (g *Game) Update() error {
@@ -56,9 +60,22 @@ func (g *Game) Update() error {
 	for _, enemy := range g.Enemies {
 		enemy.Update(&g.MetaData, g.Player, g.Environment)
 	}
+
+	// Edit Level
+	_, dy := ebiten.Wheel()
+	g.BlockSize = g.BlockSize + int(dy)
 	if inpututil.IsMouseButtonJustReleased(ebiten.MouseButtonLeft) {
-		g.Environment.BuildSquareWall(x, y, 10, 10)
+		g.Environment.BuildSquareWall(x, y, g.BlockSize, g.BlockSize)
 	}
+
+	if ebiten.IsKeyPressed(ebiten.KeyF1) {
+		b, err := json.Marshal(g.Environment.Walls)
+		if err != nil {
+			panic(err)
+		}
+		os.WriteFile("internal/gamedata/levels/newlevel.json", b, 0644)
+	}
+
 	return nil
 }
 

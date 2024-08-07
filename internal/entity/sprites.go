@@ -17,6 +17,11 @@ func (c Color) ToColor() color.Color {
 	return color.RGBA{R: uint8(c.R), G: uint8(c.G), B: uint8(c.B), A: uint8(c.A)}
 }
 
+type CachedData struct {
+	PosX float64 `json:"posx"`
+	PosY float64 `json:"posy"`
+}
+
 type Sprite struct {
 	PosX        float64       `json:"posx"`
 	PosY        float64       `json:"posy"`
@@ -24,6 +29,8 @@ type Sprite struct {
 	ImageSource *string       `json:"imagesource"`
 	BoundingBox Polygon       `json:"boundingbox"`
 	IsActive    bool          `json:"isactive"`
+
+	CachedData CachedData
 }
 
 func (s *Sprite) Update() error {

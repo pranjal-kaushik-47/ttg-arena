@@ -1,6 +1,7 @@
 package entity
 
 import (
+	"fmt"
 	"math"
 	"math/rand/v2"
 	"tag-game-v2/common"
@@ -85,6 +86,20 @@ func GetMovementDirection(enemy *Enemy, player *Player, env *Environment, screen
 			y = 0
 		}
 	}
+	if x == 0 && y == 0 {
+		fmt.Println(x, y)
+		screenCenterX, screenCenterY := float64(screenWidth/2), float64(screenHeight/2)
+		if screenCenterX > enemy.Sprite.PosX {
+			x = 1
+		} else {
+			x = -1
+		}
+		if screenCenterY > enemy.Sprite.PosY {
+			y = 1
+		} else {
+			y = -1
+		}
+	}
 	return x, y
 }
 
@@ -97,6 +112,11 @@ func (e *Enemy) Update(metaData *common.GameMetaData, p *Player, env *Environmen
 		x, y := GetMovementDirection(e, p, env, screenWidth, screenHeight)
 		e.Sprite.PosX += x
 		e.Sprite.PosY += y
+
+		e.Sprite.CachedData = CachedData{
+			PosX: e.Sprite.PosX,
+			PosY: e.Sprite.PosY,
+		}
 	}
 	if distanceFromPlayer <= 5 {
 		e.Sprite.IsActive = false

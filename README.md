@@ -24,6 +24,6 @@ game idea
 - bosses are hidden and not mandatory but enemies keeps getting harder, 2-3 levels after boss level enemies will have a chance to have the boss's abilities and the only way to get that abality is to go back a level and search for the boss
 
 
-- Boss abalities will include stuff like teliportation, reducing players eyesight, AOE attacks, time manipulation etc.
+- Boss abalities will include stuff like teliportation, reducing players eyesight, AOE attacks, time manipulation, creating walls etc.
 
   

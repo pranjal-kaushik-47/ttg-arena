@@ -1,15 +1,19 @@
 package main
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"image"
+	"image/color"
 	"os"
 	"tag-game-v2/common"
 	"tag-game-v2/internal/entity"
 
+	"github.com/hajimehoshi/ebiten/examples/resources/fonts"
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/hajimehoshi/ebiten/v2/inpututil"
+	"github.com/hajimehoshi/ebiten/v2/text/v2"
 )
 
 // TODO:
@@ -85,6 +89,20 @@ func (g *Game) Draw(screen *ebiten.Image) {
 	}
 	g.Environment.Draw(screen, g.MetaData)
 	g.Player.Draw(screen)
+
+	// level details
+
+	msg := fmt.Sprintf("Level: %d", g.MetaData.Level)
+	op := &text.DrawOptions{}
+	op.GeoM.Translate(24, 20)
+	op.ColorScale.ScaleWithColor(color.White)
+
+	s, _ := text.NewGoTextFaceSource(bytes.NewReader(fonts.MPlus1pRegular_ttf))
+
+	text.Draw(screen, msg, &text.GoTextFace{
+		Source: s,
+		Size:   10,
+	}, op)
 
 }
 

@@ -17,8 +17,8 @@ import (
 )
 
 // TODO:
-// 0. enemy AI (better logic ;P)
-// 1. map design
+// 0. enemy AI (better logic ;P) : Done
+// 1. map design system : Done
 
 // #### add art and animation ####
 

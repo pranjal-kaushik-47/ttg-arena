@@ -27,3 +27,23 @@ game idea
 - Boss abalities will include stuff like teliportation, reducing players eyesight, AOE attacks, time manipulation, creating walls etc.
 
   
+restructure ECS:
+
+GEOMETRY
+  position : X, Y
+  sprite : image, hight, width
+  boundingbox : polygon
+
+PLAYER
+  player : position, sprite
+
+ENEMY
+  enemy : position, sprite
+
+LEVEL
+  objects : position, sprite
+  environment : []objects
+  level: Environment, []enemy, player
+
+
+game: level

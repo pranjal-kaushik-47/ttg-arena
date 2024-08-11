@@ -1,0 +1,9 @@
+{
+    "velocity": 3,
+    "sprite": "resources\\images\\player.png",
+    "height": 2,
+    "width": 2,
+    "starting_x": 10,
+    "starting_y": 10,
+    "kill_radius": 10
+}

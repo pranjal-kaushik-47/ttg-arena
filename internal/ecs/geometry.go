@@ -128,30 +128,26 @@ func (b *BoundingBox) PolygonCollision(poly2Vert []ebiten.Vertex) bool {
 	return true
 }
 
-func (p *Position) MoveTo(x, y float64, box *BoundingBox, env Environment, screenHeight, screenWidth int) {
+func (p *Position) MoveTo(x, y float64, box *BoundingBox, env Environment, screenHeight, screenWidth int, velocity float64) {
 	if p.X < x && x <= float64(screenWidth) {
-		velocity := x - p.X
 		if !env.Colliding(box.BoundingBoxShiftRight(velocity)) {
 			box.Polygon.Vertices = box.BoundingBoxShiftRight(velocity).Vertices
 			p.X += velocity
 		}
 	}
 	if p.X > x && x > 0 {
-		velocity := p.X - x
 		if !env.Colliding(box.BoundingBoxShiftLeft(velocity)) {
 			box.Polygon.Vertices = box.BoundingBoxShiftLeft(velocity).Vertices
 			p.X -= velocity
 		}
 	}
 	if p.Y < y && y <= float64(screenHeight) {
-		velocity := y - p.Y
 		if !env.Colliding(box.BoundingBoxShiftDown(velocity)) {
 			box.Polygon.Vertices = box.BoundingBoxShiftDown(velocity).Vertices
 			p.Y += velocity
 		}
 	}
 	if p.Y > y && y > 0 {
-		velocity := p.Y - y
 		if !env.Colliding(box.BoundingBoxShiftUp(velocity)) {
 			box.Polygon.Vertices = box.BoundingBoxShiftUp(velocity).Vertices
 			p.Y -= velocity

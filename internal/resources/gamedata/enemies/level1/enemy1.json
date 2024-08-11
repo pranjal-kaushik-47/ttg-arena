@@ -1,9 +1,9 @@
 {
-    "velocity": 2,
+    "velocity": 3,
     "sprite": "internal\\resources\\images\\enemy.png",
     "height": 2,
     "width": 2,
-    "eyesight": 100,
+    "eyesight": 200,
     "starting_x": 300,
     "starting_y": 100
 }

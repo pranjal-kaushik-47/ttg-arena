@@ -27,14 +27,14 @@ func GetMovementDirection(enemy *Enemy, player Player, env Environment, screenWi
 	var x, y float64
 	if player.X <= enemy.X {
 		if enemy.X+enemy.Velocity < float64(screenWidth) && !env.Colliding(enemy.BoundingBox.BoundingBoxShiftRight(2)) {
-			enemy.BoundingBox.Polygon.Vertices = enemy.BoundingBox.BoundingBoxShiftRight(enemy.Velocity).Vertices
+			//enemy.BoundingBox.Polygon.Vertices = enemy.BoundingBox.BoundingBoxShiftRight(enemy.Velocity).Vertices
 			x = enemy.Velocity
 		} else {
 			x = 0
 		}
 	} else {
 		if enemy.X-enemy.Velocity > 0 && !env.Colliding(enemy.BoundingBox.BoundingBoxShiftLeft(2)) {
-			enemy.BoundingBox.Polygon.Vertices = enemy.BoundingBox.BoundingBoxShiftLeft(enemy.Velocity).Vertices
+			//enemy.BoundingBox.Polygon.Vertices = enemy.BoundingBox.BoundingBoxShiftLeft(enemy.Velocity).Vertices
 			x = -1 * enemy.Velocity
 		} else {
 			x = 0
@@ -42,14 +42,14 @@ func GetMovementDirection(enemy *Enemy, player Player, env Environment, screenWi
 	}
 	if player.Y <= enemy.Y {
 		if enemy.Y+enemy.Velocity <= float64(screenHeight) && !env.Colliding(enemy.BoundingBox.BoundingBoxShiftDown(2)) {
-			enemy.BoundingBox.Polygon.Vertices = enemy.BoundingBox.BoundingBoxShiftDown(enemy.Velocity).Vertices
+			//enemy.BoundingBox.Polygon.Vertices = enemy.BoundingBox.BoundingBoxShiftDown(enemy.Velocity).Vertices
 			y = enemy.Velocity
 		} else {
 			y = 0
 		}
 	} else {
 		if enemy.Y-enemy.Velocity >= 0 && !env.Colliding(enemy.BoundingBox.BoundingBoxShiftUp(2)) {
-			enemy.BoundingBox.Polygon.Vertices = enemy.BoundingBox.BoundingBoxShiftUp(enemy.Velocity).Vertices
+			//enemy.BoundingBox.Polygon.Vertices = enemy.BoundingBox.BoundingBoxShiftUp(enemy.Velocity).Vertices
 			y = -1 * enemy.Velocity
 		} else {
 			y = 0
@@ -75,7 +75,7 @@ func (e *Enemy) Update(p Player, env *Environment, screenHeight, screenWidth int
 	distanceFromPlayer := Distance(e, p)
 	if distanceFromPlayer <= e.Eyesight {
 		x, y := GetMovementDirection(e, p, *env, screenWidth, screenHeight)
-		e.MoveTo(e.X+x, e.Y+y, &p.BoundingBox, *env, screenHeight, screenWidth)
+		e.MoveTo(e.X+x, e.Y+y, &e.BoundingBox, *env, screenHeight, screenWidth, p.Velocity)
 		e.EnemyMemory = EnemyMemory{
 			LastPosition: Position{
 				X: e.X,

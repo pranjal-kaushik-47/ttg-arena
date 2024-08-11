@@ -49,16 +49,16 @@ func (p *Player) Init() error {
 
 func (p *Player) Update(env Environment, screenHeight, screenWidth int) {
 	if ebiten.IsKeyPressed(ebiten.KeyArrowUp) {
-		p.MoveTo(p.Position.X, p.Position.Y-p.Velocity, &p.BoundingBox, env, screenHeight, screenWidth)
+		p.MoveTo(p.Position.X, p.Position.Y-p.Velocity, &p.BoundingBox, env, screenHeight, screenWidth, p.Velocity)
 	}
 	if ebiten.IsKeyPressed(ebiten.KeyArrowDown) {
-		p.MoveTo(p.Position.X, p.Position.Y+p.Velocity, &p.BoundingBox, env, screenHeight, screenWidth)
+		p.MoveTo(p.Position.X, p.Position.Y+p.Velocity, &p.BoundingBox, env, screenHeight, screenWidth, p.Velocity)
 	}
 	if ebiten.IsKeyPressed(ebiten.KeyArrowLeft) {
-		p.MoveTo(p.Position.X-p.Velocity, p.Position.Y, &p.BoundingBox, env, screenHeight, screenWidth)
+		p.MoveTo(p.Position.X-p.Velocity, p.Position.Y, &p.BoundingBox, env, screenHeight, screenWidth, p.Velocity)
 	}
 	if ebiten.IsKeyPressed(ebiten.KeyArrowRight) {
-		p.MoveTo(p.Position.X+p.Velocity, p.Position.Y, &p.BoundingBox, env, screenHeight, screenWidth)
+		p.MoveTo(p.Position.X+p.Velocity, p.Position.Y, &p.BoundingBox, env, screenHeight, screenWidth, p.Velocity)
 	}
 }
 

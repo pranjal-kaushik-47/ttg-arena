@@ -75,7 +75,7 @@ func (e *Enemy) Update(p Player, env *Environment, screenHeight, screenWidth int
 	distanceFromPlayer := Distance(e, p)
 	if distanceFromPlayer <= e.Eyesight {
 		x, y := GetMovementDirection(e, p, *env, screenWidth, screenHeight)
-		e.MoveTo(e.X+x, e.Y+y, p.BoundingBox, *env, screenHeight, screenWidth)
+		e.MoveTo(e.X+x, e.Y+y, &p.BoundingBox, *env, screenHeight, screenWidth)
 		e.EnemyMemory = EnemyMemory{
 			LastPosition: Position{
 				X: e.X,
@@ -83,7 +83,7 @@ func (e *Enemy) Update(p Player, env *Environment, screenHeight, screenWidth int
 			},
 		}
 	}
-	if distanceFromPlayer <= p.KillRadius && e.Sprite.IsActive {
+	if e.BoundingBox.PolygonCollision(p.BoundingBox.Polygon.Vertices) && e.Sprite.IsActive {
 		e.Sprite.IsActive = false
 		env.AliveEnemyCount--
 	}

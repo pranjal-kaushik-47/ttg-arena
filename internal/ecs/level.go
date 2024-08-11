@@ -96,6 +96,5 @@ func (l *Level) Init() error {
 
 func (l *Level) NextLevel() {
 	l.Id++
-
 	l.Init()
 }

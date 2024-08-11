@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"tag-game-v2/internal/ecs"
 
 	"github.com/hajimehoshi/ebiten/v2"
@@ -18,7 +17,6 @@ func (g *Game) Update() error {
 		enemy.Update(g.levelData.Player, &g.levelData.Environment, g.ScreenHeight, g.ScreenWidth)
 	}
 	g.levelData.Player.Update(g.levelData.Environment, g.ScreenHeight, g.ScreenWidth)
-	fmt.Println(g.levelData.Environment.AliveEnemyCount)
 	if g.levelData.Environment.AliveEnemyCount == 0 {
 		g.levelData.NextLevel()
 	}
@@ -28,8 +26,10 @@ func (g *Game) Update() error {
 func (g *Game) Draw(screen *ebiten.Image) {
 	for _, enemy := range g.levelData.Enemies {
 		enemy.Draw(screen)
+		enemy.BoundingBox.Polygon.Draw(screen)
 	}
 	g.levelData.Player.Draw(screen)
+	g.levelData.Player.BoundingBox.Polygon.Draw(screen)
 }
 
 func (g *Game) Layout(outsideWidth, outsideHeight int) (int, int) {

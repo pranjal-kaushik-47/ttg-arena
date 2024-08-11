@@ -1,9 +1,11 @@
 package ecs
 
 import (
+	"image/color"
 	"math"
 
 	"github.com/hajimehoshi/ebiten/v2"
+	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
 )
 
 type Position struct {
@@ -23,13 +25,13 @@ type BoundingBox struct {
 func (b *BoundingBox) Init(X, Y, Height, Width float64) {
 	b.Polygon = Polygon{
 		Vertices: []ebiten.Vertex{
-			{DstX: float32(X), DstY: float32(Y), ColorR: 0, ColorG: 0, ColorB: 0, ColorA: 0},
-			{DstX: float32(X) + float32(Width), DstY: float32(Y), ColorR: 0, ColorG: 0, ColorB: 0, ColorA: 0},
-			{DstX: float32(X) + float32(Width), DstY: float32(Y) + float32(Width), ColorR: 0, ColorG: 0, ColorB: 0, ColorA: 0},
-			{DstX: float32(X), DstY: float32(Y) + float32(Width), ColorR: 0, ColorG: 0, ColorB: 0, ColorA: 0},
+			{DstX: float32(X), DstY: float32(Y), ColorR: 1, ColorG: 1, ColorB: 1, ColorA: 1},
+			{DstX: float32(X) + float32(Width)*15, DstY: float32(Y), ColorR: 1, ColorG: 1, ColorB: 1, ColorA: 1},
+			{DstX: float32(X) + float32(Width)*15, DstY: float32(Y) + float32(Width)*20, ColorR: 1, ColorG: 1, ColorB: 1, ColorA: 1},
+			{DstX: float32(X), DstY: float32(Y) + float32(Width)*20, ColorR: 1, ColorG: 1, ColorB: 1, ColorA: 1},
 		},
 		Indices: []uint16{1, 0, 3, 1, 2, 3}, // square
-		Color:   Color{R: 0, G: 0, B: 0, A: 0},
+		Color:   Color{R: 1, G: 1, B: 1, A: 1},
 	}
 }
 
@@ -126,7 +128,7 @@ func (b *BoundingBox) PolygonCollision(poly2Vert []ebiten.Vertex) bool {
 	return true
 }
 
-func (p *Position) MoveTo(x, y float64, box BoundingBox, env Environment, screenHeight, screenWidth int) {
+func (p *Position) MoveTo(x, y float64, box *BoundingBox, env Environment, screenHeight, screenWidth int) {
 	if p.X < x && x <= float64(screenWidth) {
 		velocity := x - p.X
 		if !env.Colliding(box.BoundingBoxShiftRight(2)) {
@@ -156,4 +158,13 @@ func (p *Position) MoveTo(x, y float64, box BoundingBox, env Environment, screen
 		}
 	}
 
+}
+
+func (p *Polygon) Draw(screen *ebiten.Image) {
+
+	// Draw lines over the edges to make only the borders visible
+	ebitenutil.DrawLine(screen, float64(p.Vertices[0].DstX), float64(p.Vertices[0].DstY), float64(p.Vertices[1].DstX), float64(p.Vertices[1].DstY), color.White)
+	ebitenutil.DrawLine(screen, float64(p.Vertices[1].DstX), float64(p.Vertices[1].DstY), float64(p.Vertices[2].DstX), float64(p.Vertices[2].DstY), color.White)
+	ebitenutil.DrawLine(screen, float64(p.Vertices[2].DstX), float64(p.Vertices[2].DstY), float64(p.Vertices[3].DstX), float64(p.Vertices[3].DstY), color.White)
+	ebitenutil.DrawLine(screen, float64(p.Vertices[3].DstX), float64(p.Vertices[3].DstY), float64(p.Vertices[0].DstX), float64(p.Vertices[0].DstY), color.White)
 }

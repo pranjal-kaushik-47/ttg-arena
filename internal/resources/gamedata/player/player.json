@@ -1,6 +1,6 @@
 {
     "velocity": 3,
-    "sprite": "resources\\images\\player.png",
+    "sprite": "internal\\resources\\images\\player.png",
     "height": 2,
     "width": 2,
     "starting_x": 10,

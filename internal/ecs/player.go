@@ -18,7 +18,7 @@ type Player struct {
 
 func (p *Player) Init() error {
 	var playerConfig map[string]interface{}
-	jsonData, err := os.ReadFile("resources/gamedata/player/player.json")
+	jsonData, err := os.ReadFile("internal/resources/gamedata/player/player.json")
 	if err != nil {
 		return err
 	}

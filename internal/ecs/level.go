@@ -47,7 +47,7 @@ func (e *Environment) Colliding(Polygon Polygon) bool {
 }
 
 func (l *Level) Init() error {
-	enemyFile, err := os.ReadDir("resources/gamedata/enemies/level" + strconv.Itoa(l.Id) + "/")
+	enemyFile, err := os.ReadDir("internal/resources/gamedata/enemies/level" + strconv.Itoa(l.Id) + "/")
 	if err != nil {
 		return err
 	}
@@ -56,7 +56,7 @@ func (l *Level) Init() error {
 
 	for _, file := range enemyFile {
 		var enemyConfig map[string]interface{}
-		jsonData, err := os.ReadFile("resources/gamedata/enemies/level" + strconv.Itoa(l.Id) + "/" + file.Name())
+		jsonData, err := os.ReadFile("internal/resources/gamedata/enemies/level" + strconv.Itoa(l.Id) + "/" + file.Name())
 		if err != nil {
 			return err
 		}

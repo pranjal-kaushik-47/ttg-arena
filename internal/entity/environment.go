@@ -108,6 +108,6 @@ func (e *Environment) BuildSquareWall(X, Y, Width, Height int) {
 			A: 1,
 		},
 	}
-
-	e.Walls = append(e.Walls, Wall{Sprite: &Sprite{BoundingBox: square, IsActive: true}})
+	image := "resources\\images\\wall.png"
+	e.Walls = append(e.Walls, Wall{Sprite: &Sprite{BoundingBox: square, IsActive: true, ImageSource: image, Height: float64(Height), Width: float64(Width), PosX: float64(X), PosY: float64(Y)}})
 }

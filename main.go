@@ -42,7 +42,8 @@ type Game struct {
 	HideSystemCursor bool
 
 	// Temp Var for level editing
-	BlockSize int
+	BlockSize           int
+	EnableBlockCollider bool
 }
 
 func (g *Game) Update() error {
@@ -78,10 +79,17 @@ func (g *Game) Update() error {
 	if inpututil.IsKeyJustReleased(ebiten.KeyEscape) {
 		g.HideSystemCursor = false
 	}
+
+	if inpututil.IsKeyJustPressed(ebiten.KeyQ) {
+		g.EnableBlockCollider = false
+	}
+	if inpututil.IsKeyJustReleased(ebiten.KeyQ) {
+		g.EnableBlockCollider = true
+	}
 	_, dy := ebiten.Wheel()
 	g.BlockSize = g.BlockSize + int(dy)
 	if inpututil.IsMouseButtonJustReleased(ebiten.MouseButtonLeft) {
-		g.Environment.BuildSquareWall(x, y, g.BlockSize, g.BlockSize)
+		g.Environment.BuildSquareWall(x, y, g.BlockSize, g.BlockSize, g.EnableBlockCollider)
 	}
 
 	if ebiten.IsKeyPressed(ebiten.KeyF1) {

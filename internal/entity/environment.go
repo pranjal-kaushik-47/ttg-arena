@@ -46,65 +46,76 @@ func (e *Environment) Colliding(tag string, Polygon Polygon) bool {
 
 	c := false
 	for _, wall := range e.Walls {
-		if wall.Sprite.BoundingBox.PolygonCollision(Polygon.Vertices) {
-			c = true
+		if wall.Sprite.BoundingBox.IsActive {
+			if wall.Sprite.BoundingBox.PolygonCollision(Polygon.Vertices) {
+				c = true
+			}
 		}
 	}
 	return c
 }
 
-func (e *Environment) BuildSquareWall(X, Y, Width, Height int) {
+func (e *Environment) BuildSquareWall(X, Y, Width, Height int, enableColliders bool) {
 	halfHight := Height / 2
 	halfWidth := Width / 2
-	square := Polygon{
-		Vertices: []ebiten.Vertex{
-			{
-				DstX:   float32(X - halfWidth),
-				DstY:   float32(Y - halfHight),
-				ColorR: 1,
-				ColorG: 255,
-				ColorB: 1,
-				ColorA: 1,
+
+	var square Polygon
+	if enableColliders {
+		square = Polygon{
+			Vertices: []ebiten.Vertex{
+				{
+					DstX:   float32(X - halfWidth),
+					DstY:   float32(Y - halfHight),
+					ColorR: 1,
+					ColorG: 255,
+					ColorB: 1,
+					ColorA: 1,
+				},
+				{
+					DstX:   float32(X + halfWidth),
+					DstY:   float32(Y - halfHight),
+					ColorR: 1,
+					ColorG: 255,
+					ColorB: 1,
+					ColorA: 1,
+				},
+				{
+					DstX:   float32(X + halfWidth),
+					DstY:   float32(Y + halfHight),
+					ColorR: 1,
+					ColorG: 255,
+					ColorB: 1,
+					ColorA: 1,
+				},
+				{
+					DstX:   float32(X - halfWidth),
+					DstY:   float32(Y + halfHight),
+					ColorR: 1,
+					ColorG: 255,
+					ColorB: 1,
+					ColorA: 1,
+				},
 			},
-			{
-				DstX:   float32(X + halfWidth),
-				DstY:   float32(Y - halfHight),
-				ColorR: 1,
-				ColorG: 255,
-				ColorB: 1,
-				ColorA: 1,
+			Indices: []uint16{
+				0,
+				1,
+				2,
+				2,
+				3,
+				0,
 			},
-			{
-				DstX:   float32(X + halfWidth),
-				DstY:   float32(Y + halfHight),
-				ColorR: 1,
-				ColorG: 255,
-				ColorB: 1,
-				ColorA: 1,
+			Color: Color{
+				R: 255,
+				G: 0,
+				B: 0,
+				A: 1,
 			},
-			{
-				DstX:   float32(X - halfWidth),
-				DstY:   float32(Y + halfHight),
-				ColorR: 1,
-				ColorG: 255,
-				ColorB: 1,
-				ColorA: 1,
-			},
-		},
-		Indices: []uint16{
-			0,
-			1,
-			2,
-			2,
-			3,
-			0,
-		},
-		Color: Color{
-			R: 255,
-			G: 0,
-			B: 0,
-			A: 1,
-		},
+			IsActive: true,
+		}
+	} else {
+		square = Polygon{
+			IsActive: false,
+		}
 	}
 	image := "resources\\images\\wall.png"
 	e.Walls = append(e.Walls, Wall{Sprite: &Sprite{BoundingBox: square, IsActive: true, ImageSource: image, Height: float64(Height), Width: float64(Width), PosX: float64(X), PosY: float64(Y)}})

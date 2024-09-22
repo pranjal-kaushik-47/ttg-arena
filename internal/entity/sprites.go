@@ -67,7 +67,7 @@ func (s *Sprite) Draw(screen *ebiten.Image) error {
 		}
 
 		// uncomment the following line to render the bounding box of the entities
-		// s.BoundingBox.Draw(screen)
+		s.BoundingBox.Draw(screen)
 
 	}
 	return nil

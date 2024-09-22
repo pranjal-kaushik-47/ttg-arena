@@ -17,6 +17,7 @@ type Polygon struct {
 	Vertices []ebiten.Vertex `json:"vertices"`
 	Indices  []uint16        `json:"indices"`
 	Color    Color           `json:"color"`
+	IsActive bool
 }
 
 func (p *Polygon) Draw(screen *ebiten.Image) error {

@@ -100,12 +100,12 @@ func (g *Game) Update() error {
 func (g *Game) Draw(screen *ebiten.Image) {
 	if g.HideSystemCursor {
 		x, y := ebiten.CursorPosition()
-		rect := ebiten.NewImage(10, 10)
+		rect := ebiten.NewImage(g.BlockSize, g.BlockSize)
 		rect.Fill(color.RGBA{255, 0, 0, 255}) // Red rectangle
 
 		// Draw the rectangle at the mouse cursor position
 		op := &ebiten.DrawImageOptions{}
-		op.GeoM.Translate(float64(x), float64(y))
+		op.GeoM.Translate(float64(x)-(float64(g.BlockSize)/2), float64(y)-(float64(g.BlockSize)/2))
 
 		screen.DrawImage(rect, op)
 	}

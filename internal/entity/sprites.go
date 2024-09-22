@@ -45,9 +45,11 @@ func (s *Sprite) Draw(screen *ebiten.Image) error {
 	if s.IsActive {
 		opts := &ebiten.DrawImageOptions{}
 		if s.Height != 0.0 && s.Width != 0.0 {
-			opts.GeoM.Scale(s.Height, s.Width)
+			opts.GeoM.Scale(s.Height*0.06, s.Width*0.06)
 		}
-		opts.GeoM.Translate(s.PosX, s.PosY)
+		halfHight := s.Height / 2
+		halfWidth := s.Width / 2
+		opts.GeoM.Translate(s.PosX-halfWidth, s.PosY-halfHight)
 		if s.Image == nil && s.ImageSource != "" {
 			f, err := os.Open(s.ImageSource)
 			if err != nil {

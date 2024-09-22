@@ -150,7 +150,7 @@ func (g *Game) NewLevel(metaData common.GameMetaData) error {
 
 	// environment
 	g.Environment = &entity.Environment{}
-	// g.Environment.BuildWalls(0, metaData.ScreenWidth, metaData.ScreenHeight)
+	g.Environment.BuildWalls(0, metaData.ScreenWidth, metaData.ScreenHeight)
 
 	// enemies
 	enemies := make([]*entity.Enemy, 0)

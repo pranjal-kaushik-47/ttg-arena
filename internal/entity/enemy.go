@@ -7,7 +7,6 @@ import (
 	"tag-game-v2/common"
 
 	ebiten "github.com/hajimehoshi/ebiten/v2"
-	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
 )
 
 type Enemy struct {
@@ -21,15 +20,15 @@ type Enemy struct {
 // move away from last point and the player
 
 func (e *Enemy) Reset(env *Environment, metaData *common.GameMetaData) error {
-	image, _, err := ebitenutil.NewImageFromFile("resources\\images\\enemy.png")
-	if err != nil {
-		return err
-	}
+	// image, _, err := ebitenutil.NewImageFromFile("resources\\images\\enemy.png")
+	// if err != nil {
+	// 	return err
+	// }
 	if e.Sprite == nil {
 		e.Sprite = &Sprite{}
 	}
 	e.Speed = 1 //float64(rand.IntN(3))
-	e.Sprite.Image = image
+	e.Sprite.ImageSource = "resources\\images\\enemy.png"
 	e.Sprite.PosX = float64(rand.IntN(metaData.ScreenWidth - 15))
 	e.Sprite.PosY = float64(rand.IntN(metaData.ScreenHeight - 15))
 	e.Sprite.IsActive = true

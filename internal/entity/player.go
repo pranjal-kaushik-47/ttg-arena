@@ -4,7 +4,6 @@ import (
 	"tag-game-v2/common"
 
 	ebiten "github.com/hajimehoshi/ebiten/v2"
-	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
 )
 
 type Player struct {
@@ -13,15 +12,15 @@ type Player struct {
 }
 
 func (p *Player) Reset() error {
-	image, _, err := ebitenutil.NewImageFromFile("resources\\images\\player.png")
-	if err != nil {
-		return err
-	}
+	// image, _, err := ebitenutil.NewImageFromFile("resources\\images\\player.png")
+	// if err != nil {
+	// 	return err
+	// }
 	if p.Sprite == nil {
 		p.Sprite = &Sprite{}
 	}
 	p.Speed = 2
-	p.Sprite.Image = image
+	p.Sprite.ImageSource = "resources\\images\\player.png"
 	p.Sprite.PosX = 100
 	p.Sprite.PosY = 100
 	p.Sprite.IsActive = true

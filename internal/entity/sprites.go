@@ -50,7 +50,7 @@ func (s *Sprite) Draw(screen *ebiten.Image) error {
 		halfHight := s.Height / 2
 		halfWidth := s.Width / 2
 		opts.GeoM.Translate(s.PosX-halfWidth, s.PosY-halfHight)
-		if s.Image == nil && s.ImageSource != "" {
+		if s.ImageSource != "" {
 			f, err := os.Open(s.ImageSource)
 			if err != nil {
 				panic(err)
@@ -61,8 +61,6 @@ func (s *Sprite) Draw(screen *ebiten.Image) error {
 				panic(err)
 			}
 			s.Image = ebiten.NewImageFromImage(img)
-		}
-		if s.Image != nil {
 			screen.DrawImage(s.Image, opts)
 		}
 

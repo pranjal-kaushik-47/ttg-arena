@@ -35,16 +35,22 @@ import (
 // 8. Boss fight
 
 type Game struct {
-	Player      *entity.Player
-	Enemies     []*entity.Enemy
-	Environment *entity.Environment
-	MetaData    common.GameMetaData
+	Player           *entity.Player
+	Enemies          []*entity.Enemy
+	Environment      *entity.Environment
+	MetaData         common.GameMetaData
+	HideSystemCursor bool
 
 	// Temp Var for level editing
 	BlockSize int
 }
 
 func (g *Game) Update() error {
+	if g.HideSystemCursor {
+		ebiten.SetCursorMode(ebiten.CursorModeHidden)
+	} else {
+		ebiten.SetCursorMode(ebiten.CursorModeVisible)
+	}
 	x, y := ebiten.CursorPosition()
 	// fmt.Println(x, y, inpututil.IsMouseButtonJustReleased(ebiten.MouseButtonLeft))
 	CurrentEnemyCount := 0
@@ -66,6 +72,14 @@ func (g *Game) Update() error {
 	}
 
 	// Edit Level
+	if inpututil.IsKeyJustPressed(ebiten.KeyEscape) {
+		fmt.Println("Pressed")
+		g.HideSystemCursor = true
+	}
+	if inpututil.IsKeyJustReleased(ebiten.KeyEscape) {
+		fmt.Println("Released")
+		g.HideSystemCursor = false
+	}
 	_, dy := ebiten.Wheel()
 	g.BlockSize = g.BlockSize + int(dy)
 	if inpututil.IsMouseButtonJustReleased(ebiten.MouseButtonLeft) {
@@ -84,6 +98,17 @@ func (g *Game) Update() error {
 }
 
 func (g *Game) Draw(screen *ebiten.Image) {
+	if g.HideSystemCursor {
+		x, y := ebiten.CursorPosition()
+		rect := ebiten.NewImage(10, 10)
+		rect.Fill(color.RGBA{255, 0, 0, 255}) // Red rectangle
+
+		// Draw the rectangle at the mouse cursor position
+		op := &ebiten.DrawImageOptions{}
+		op.GeoM.Translate(float64(x), float64(y))
+
+		screen.DrawImage(rect, op)
+	}
 	for _, enemy := range g.Enemies {
 		enemy.Draw(screen)
 	}
@@ -140,7 +165,9 @@ func main() {
 	g.CurrentEnemyCount = g.TotalEnemies
 	g.BoundryEdgeBuffer = 15
 
-	game := &Game{}
+	game := &Game{
+		BlockSize: 10,
+	}
 	game.NewLevel(g)
 
 	// player

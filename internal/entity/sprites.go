@@ -63,12 +63,13 @@ func (s *Sprite) Draw(screen *ebiten.Image) error {
 		if s.Image != nil {
 			screen.DrawImage(s.Image, opts)
 		}
+		s.BoundingBox.Draw(screen)
 
 	}
 	return nil
 }
 
-func (s *Sprite) AppluBoundingBox(polygon Polygon) {
+func (s *Sprite) ApplyBoundingBox(polygon Polygon) {
 	s.BoundingBox = polygon
 }
 

@@ -26,7 +26,6 @@ func (e *Environment) Draw(screen *ebiten.Image, metaData common.GameMetaData) e
 	for _, wall := range e.Walls {
 		wall.Sprite.Draw(screen)
 		wall.Sprite.BoundingBox.Draw(screen)
-
 	}
 	return nil
 }

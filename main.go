@@ -73,11 +73,9 @@ func (g *Game) Update() error {
 
 	// Edit Level
 	if inpututil.IsKeyJustPressed(ebiten.KeyEscape) {
-		fmt.Println("Pressed")
 		g.HideSystemCursor = true
 	}
 	if inpututil.IsKeyJustReleased(ebiten.KeyEscape) {
-		fmt.Println("Released")
 		g.HideSystemCursor = false
 	}
 	_, dy := ebiten.Wheel()

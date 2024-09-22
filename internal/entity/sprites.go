@@ -45,7 +45,7 @@ func (s *Sprite) Draw(screen *ebiten.Image) error {
 	if s.IsActive {
 		opts := &ebiten.DrawImageOptions{}
 		if s.Height != 0.0 && s.Width != 0.0 {
-			opts.GeoM.Scale(s.Height*0.06, s.Width*0.06)
+			opts.GeoM.Scale(s.Height*0.063, s.Width*0.063)
 		}
 		halfHight := s.Height / 2
 		halfWidth := s.Width / 2

@@ -32,7 +32,7 @@ func (e *Environment) Draw(screen *ebiten.Image, metaData common.GameMetaData) e
 func (e *Environment) BuildWalls(currentLevel int, screenWidth, screenHeight int) {
 	if currentLevel == 0 {
 		walls := make([]Wall, 0)
-		levelJson, _ := os.ReadFile("internal/gamedata/levels/level1.json")
+		levelJson, _ := os.ReadFile("internal/gamedata/levels/newlevel.json")
 		err := json.Unmarshal(levelJson, &walls)
 		if err != nil {
 			panic(err)

@@ -81,10 +81,12 @@ func (g *Game) Update() error {
 	}
 
 	if inpututil.IsKeyJustPressed(ebiten.KeyQ) {
-		g.EnableBlockCollider = false
+		g.EnableBlockCollider = true
+		fmt.Println("Enabled Collider")
 	}
 	if inpututil.IsKeyJustReleased(ebiten.KeyQ) {
-		g.EnableBlockCollider = true
+		g.EnableBlockCollider = false
+		fmt.Println("Disabled Collider")
 	}
 	_, dy := ebiten.Wheel()
 	g.BlockSize = g.BlockSize + int(dy)
@@ -104,6 +106,8 @@ func (g *Game) Update() error {
 }
 
 func (g *Game) Draw(screen *ebiten.Image) {
+	clr := color.RGBA{135, 206, 235, 255} // RGB for light blue color
+	screen.Fill(clr)
 	if g.HideSystemCursor {
 		x, y := ebiten.CursorPosition()
 		rect := ebiten.NewImage(g.BlockSize, g.BlockSize)
@@ -172,7 +176,8 @@ func main() {
 	g.BoundryEdgeBuffer = 15
 
 	game := &Game{
-		BlockSize: 10,
+		BlockSize:           10,
+		EnableBlockCollider: true,
 	}
 	game.NewLevel(g)
 

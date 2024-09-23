@@ -15,6 +15,9 @@ type Wall struct {
 
 type Environment struct {
 	Walls []Wall `json:"walls"`
+
+	// Temp Var for level editing
+	TempPoints []Point
 }
 
 // how to create square tiles in ebitan?
@@ -117,6 +120,34 @@ func (e *Environment) BuildSquareWall(X, Y, Width, Height int, enableColliders b
 			IsActive: false,
 		}
 	}
-	image := "resources\\images\\wall.png"
+	image := "resources\\images\\wall2.png"
 	e.Walls = append(e.Walls, Wall{Sprite: &Sprite{BoundingBox: square, IsActive: true, ImageSource: image, Height: float64(Height), Width: float64(Width), PosX: float64(X), PosY: float64(Y)}})
+}
+
+func (e *Environment) DrawCollider(X, Y int) {
+	if len(e.TempPoints) == 3 {
+		v := make([]ebiten.Vertex, 0)
+		for _, i := range e.TempPoints {
+			v = append(v, ebiten.Vertex{
+				DstX: float32(i.X),
+				DstY: float32(i.Y)})
+		}
+		v = append(v, ebiten.Vertex{
+			DstX: float32(X),
+			DstY: float32(Y),
+		})
+
+		in := []uint16{
+			1, 0, 3, 1, 2, 3,
+		}
+		p := Polygon{
+			Vertices: v,
+			Indices:  in,
+			IsActive: true,
+		}
+		e.TempPoints = []Point{}
+		e.Walls = append(e.Walls, Wall{Sprite: &Sprite{BoundingBox: p, IsActive: true}})
+	} else {
+		e.TempPoints = append(e.TempPoints, Point{X: float64(X), Y: float64(Y)})
+	}
 }

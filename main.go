@@ -91,7 +91,8 @@ func (g *Game) Update() error {
 	_, dy := ebiten.Wheel()
 	g.BlockSize = g.BlockSize + int(dy)
 	if inpututil.IsMouseButtonJustReleased(ebiten.MouseButtonLeft) {
-		g.Environment.BuildSquareWall(x, y, g.BlockSize, g.BlockSize, g.EnableBlockCollider)
+		// g.Environment.BuildSquareWall(x, y, g.BlockSize, g.BlockSize, g.EnableBlockCollider)
+		g.Environment.DrawCollider(x, y)
 	}
 
 	if ebiten.IsKeyPressed(ebiten.KeyF1) {
@@ -152,7 +153,7 @@ func (g *Game) NewLevel(metaData common.GameMetaData) error {
 	g.Environment = &entity.Environment{}
 
 	// load saved level by uncommenting the line below
-	// g.Environment.BuildWalls(0, metaData.ScreenWidth, metaData.ScreenHeight)
+	g.Environment.BuildWalls(0, metaData.ScreenWidth, metaData.ScreenHeight)
 
 	// enemies
 	enemies := make([]*entity.Enemy, 0)

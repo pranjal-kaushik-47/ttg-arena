@@ -124,7 +124,7 @@ func (g *Game) Update() error {
 }
 
 func (g *Game) Draw(screen *ebiten.Image) {
-	clr := color.RGBA{135, 206, 235, 255} // RGB for light blue color
+	clr := color.RGBA{40, 44, 52, 255}
 	screen.Fill(clr)
 	if g.ChangeCursor {
 		x, y := ebiten.CursorPosition()

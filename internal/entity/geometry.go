@@ -20,6 +20,10 @@ type Polygon struct {
 	IsActive bool
 }
 
+func Distance(P1 *Point, P2 *Point) float64 {
+	return math.Sqrt(math.Pow(P2.X-P1.X, 2) + math.Pow(P2.Y-P1.Y, 2))
+}
+
 func (p *Polygon) Draw(screen *ebiten.Image) error {
 	// op := &ebiten.DrawTrianglesOptions{}
 	// op.Address = ebiten.AddressUnsafe

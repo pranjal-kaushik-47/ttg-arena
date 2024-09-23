@@ -140,7 +140,7 @@ func (g *Game) Draw(screen *ebiten.Image) {
 	for _, enemy := range g.Enemies {
 		enemy.Draw(screen)
 	}
-	g.Environment.Draw(screen, g.MetaData)
+	g.Environment.Draw(screen, g.MetaData, entity.Point{X: g.Player.Sprite.PosX, Y: g.Player.Sprite.PosY})
 	g.Player.Draw(screen)
 
 	// level details

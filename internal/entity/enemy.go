@@ -1,8 +1,6 @@
 package entity
 
 import (
-	"fmt"
-	"math"
 	"math/rand/v2"
 	"tag-game-v2/common"
 
@@ -49,10 +47,6 @@ func (e *Enemy) Reset(env *Environment, metaData *common.GameMetaData) error {
 	return nil
 }
 
-func Distance(enemy *Enemy, player *Player) float64 {
-	return math.Sqrt(math.Pow(player.Sprite.PosX-enemy.Sprite.PosX, 2) + math.Pow(player.Sprite.PosY-enemy.Sprite.PosY, 2))
-}
-
 func GetMovementDirection(enemy *Enemy, player *Player, env *Environment, screenWidth, screenHeight int) (float64, float64) {
 	var x, y float64
 	if player.Sprite.PosX <= enemy.Sprite.PosX {
@@ -86,7 +80,6 @@ func GetMovementDirection(enemy *Enemy, player *Player, env *Environment, screen
 		}
 	}
 	if x == 0 && y == 0 {
-		fmt.Println(x, y)
 		screenCenterX, screenCenterY := float64(screenWidth/2), float64(screenHeight/2)
 		if screenCenterX > enemy.Sprite.PosX {
 			x = 1
@@ -106,7 +99,7 @@ func (e *Enemy) Update(metaData *common.GameMetaData, p *Player, env *Environmen
 
 	screenWidth, screenHeight := metaData.ScreenWidth-metaData.BoundryEdgeBuffer, metaData.ScreenHeight-metaData.BoundryEdgeBuffer
 
-	distanceFromPlayer := Distance(e, p)
+	distanceFromPlayer := Distance(&Point{X: e.Sprite.PosX, Y: e.Sprite.PosY}, &Point{X: p.Sprite.PosX, Y: p.Sprite.PosY})
 	if distanceFromPlayer <= e.Eyesight {
 		x, y := GetMovementDirection(e, p, env, screenWidth, screenHeight)
 		e.Sprite.PosX += x

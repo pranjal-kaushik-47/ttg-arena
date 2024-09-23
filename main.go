@@ -35,19 +35,23 @@ import (
 // 8. Boss fight
 
 type Game struct {
-	Player           *entity.Player
-	Enemies          []*entity.Enemy
-	Environment      *entity.Environment
-	MetaData         common.GameMetaData
-	HideSystemCursor bool
+	Player      *entity.Player
+	Enemies     []*entity.Enemy
+	Environment *entity.Environment
+	MetaData    common.GameMetaData
 
 	// Temp Var for level editing
-	BlockSize           int
+	BlockSize int
+
+	// Game Engine Controls
+	DrawSprite          bool
+	DrawCollider        bool
+	ChangeCursor        bool
 	EnableBlockCollider bool
 }
 
 func (g *Game) Update() error {
-	if g.HideSystemCursor {
+	if g.ChangeCursor {
 		ebiten.SetCursorMode(ebiten.CursorModeHidden)
 	} else {
 		ebiten.SetCursorMode(ebiten.CursorModeVisible)
@@ -73,26 +77,39 @@ func (g *Game) Update() error {
 	}
 
 	// Edit Level
-	if inpututil.IsKeyJustPressed(ebiten.KeyEscape) {
-		g.HideSystemCursor = true
-	}
-	if inpututil.IsKeyJustReleased(ebiten.KeyEscape) {
-		g.HideSystemCursor = false
+	if ebiten.IsKeyPressed(ebiten.KeyControl) {
+		if inpututil.IsKeyJustPressed(ebiten.KeyC) {
+			g.ChangeCursor = !g.ChangeCursor
+		}
 	}
 
-	if inpututil.IsKeyJustPressed(ebiten.KeyQ) {
-		g.EnableBlockCollider = true
-		fmt.Println("Enabled Collider")
+	if ebiten.IsKeyPressed(ebiten.KeyControl) {
+		if inpututil.IsKeyJustPressed(ebiten.KeyD) {
+			g.DrawSprite = !g.DrawSprite
+		}
 	}
-	if inpututil.IsKeyJustReleased(ebiten.KeyQ) {
-		g.EnableBlockCollider = false
-		fmt.Println("Disabled Collider")
+
+	if ebiten.IsKeyPressed(ebiten.KeyControl) {
+		if inpututil.IsKeyJustPressed(ebiten.KeyB) {
+			g.EnableBlockCollider = !g.EnableBlockCollider
+		}
 	}
+
+	if ebiten.IsKeyPressed(ebiten.KeyControl) {
+		if inpututil.IsKeyJustPressed(ebiten.KeyQ) {
+			g.DrawCollider = !g.DrawCollider
+		}
+	}
+
 	_, dy := ebiten.Wheel()
 	g.BlockSize = g.BlockSize + int(dy)
 	if inpututil.IsMouseButtonJustReleased(ebiten.MouseButtonLeft) {
-		// g.Environment.BuildSquareWall(x, y, g.BlockSize, g.BlockSize, g.EnableBlockCollider)
-		g.Environment.DrawCollider(x, y)
+		if g.DrawSprite {
+			g.Environment.BuildSquareWall(x, y, g.BlockSize, g.BlockSize, g.EnableBlockCollider)
+		}
+		if g.DrawCollider {
+			g.Environment.DrawCollider(x, y)
+		}
 	}
 
 	if ebiten.IsKeyPressed(ebiten.KeyF1) {
@@ -109,7 +126,7 @@ func (g *Game) Update() error {
 func (g *Game) Draw(screen *ebiten.Image) {
 	clr := color.RGBA{135, 206, 235, 255} // RGB for light blue color
 	screen.Fill(clr)
-	if g.HideSystemCursor {
+	if g.ChangeCursor {
 		x, y := ebiten.CursorPosition()
 		rect := ebiten.NewImage(g.BlockSize, g.BlockSize)
 		rect.Fill(color.RGBA{255, 0, 0, 255}) // Red rectangle
@@ -128,7 +145,7 @@ func (g *Game) Draw(screen *ebiten.Image) {
 
 	// level details
 
-	msg := fmt.Sprintf("Level: %d", g.MetaData.Level)
+	msg := fmt.Sprintf("Level: %d, Sprite(D): %v, Collider(Q): %v, Cursor(C): %v, BlockCollider(B): %v", g.MetaData.Level, g.DrawSprite, g.DrawCollider, g.ChangeCursor, g.EnableBlockCollider)
 	op := &text.DrawOptions{}
 	op.GeoM.Translate(24, 20)
 	op.ColorScale.ScaleWithColor(color.White)
@@ -179,8 +196,7 @@ func main() {
 	g.BoundryEdgeBuffer = 15
 
 	game := &Game{
-		BlockSize:           10,
-		EnableBlockCollider: true,
+		BlockSize: 10,
 	}
 	game.NewLevel(g)
 

@@ -19,12 +19,7 @@ type Environment struct {
 	TempPoints []Point
 }
 
-// how to create square tiles in ebitan? : done
-// find a easier way to design a map + create a level designer : done
-
 func (e *Environment) Draw(screen *ebiten.Image, metaData common.GameMetaData, playerPosition Point) error {
-	// screenWidth, screenHeight := metaData.ScreenWidth, metaData.ScreenHeight
-	// e.buildWalls(currentLevel, screenWidth, screenHeight)
 	for _, wall := range e.Walls {
 		if Distance(&playerPosition, &Point{X: wall.Sprite.PosX, Y: wall.Sprite.PosY}) < 100 {
 			wall.Sprite.Draw(screen)

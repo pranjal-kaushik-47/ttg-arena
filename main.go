@@ -168,7 +168,6 @@ func (g *Game) Draw(screen *ebiten.Image) {
 	}
 	g.Environment.Draw(screen, g.MetaData, entity.Point{X: g.Player.Sprite.PosX, Y: g.Player.Sprite.PosY})
 	g.Player.Draw(screen)
-
 }
 
 func (g *Game) Layout(outsideWidth, outsideHeight int) (int, int) {

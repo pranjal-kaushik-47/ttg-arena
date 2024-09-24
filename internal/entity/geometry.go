@@ -25,12 +25,6 @@ func Distance(P1 *Point, P2 *Point) float64 {
 }
 
 func (p *Polygon) Draw(screen *ebiten.Image) error {
-	// op := &ebiten.DrawTrianglesOptions{}
-	// op.Address = ebiten.AddressUnsafe
-	// img := ebiten.NewImage(1, 1) // A 1x1 image to be used as a placeholder
-	// // img.Fill(p.Color.ToColor())
-	// screen.DrawTriangles(p.Vertices, p.Indices, img, op)
-	// return nil
 	for i := 0; i < len(p.Indices)-1; i++ {
 		p1 := p.Vertices[p.Indices[i]]
 		p2 := p.Vertices[p.Indices[i+1]]

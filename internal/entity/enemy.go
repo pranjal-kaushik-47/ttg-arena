@@ -24,10 +24,6 @@ type Enemy struct {
 // move away from last point and the player
 
 func (e *Enemy) Reset(env *Environment, metaData *common.GameMetaData) error {
-	// image, _, err := ebitenutil.NewImageFromFile("resources\\images\\enemy.png")
-	// if err != nil {
-	// 	return err
-	// }
 	if e.Sprite == nil {
 		e.Sprite = &Sprite{}
 	}

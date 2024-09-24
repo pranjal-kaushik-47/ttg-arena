@@ -2102,7 +2102,7 @@
             "posx": 25,
             "posy": 8,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -2128,7 +2128,7 @@
             "posx": 42,
             "posy": 8,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -2154,7 +2154,7 @@
             "posx": 58,
             "posy": 8,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -2180,7 +2180,7 @@
             "posx": 68,
             "posy": 8,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -2206,7 +2206,7 @@
             "posx": 78,
             "posy": 8,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -2232,7 +2232,7 @@
             "posx": 94,
             "posy": 7,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -2258,7 +2258,7 @@
             "posx": 108,
             "posy": 7,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -2284,7 +2284,7 @@
             "posx": 125,
             "posy": 7,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -2310,7 +2310,7 @@
             "posx": 131,
             "posy": 8,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -2336,7 +2336,7 @@
             "posx": 148,
             "posy": 8,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -2362,7 +2362,7 @@
             "posx": 165,
             "posy": 7,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -2388,7 +2388,7 @@
             "posx": 180,
             "posy": 7,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -2414,7 +2414,7 @@
             "posx": 197,
             "posy": 7,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -2440,7 +2440,7 @@
             "posx": 213,
             "posy": 7,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -2466,7 +2466,7 @@
             "posx": 220,
             "posy": 7,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -2492,7 +2492,7 @@
             "posx": 231,
             "posy": 7,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -2518,7 +2518,7 @@
             "posx": 243,
             "posy": 6,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -2544,7 +2544,7 @@
             "posx": 256,
             "posy": 7,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -2570,7 +2570,7 @@
             "posx": 273,
             "posy": 7,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -2596,7 +2596,7 @@
             "posx": 284,
             "posy": 7,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -2622,7 +2622,7 @@
             "posx": 279,
             "posy": 7,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -2648,7 +2648,7 @@
             "posx": 299,
             "posy": 7,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -2674,7 +2674,7 @@
             "posx": 315,
             "posy": 7,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -2700,7 +2700,7 @@
             "posx": 331,
             "posy": 6,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -2726,7 +2726,7 @@
             "posx": 339,
             "posy": 6,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -2752,7 +2752,7 @@
             "posx": 350,
             "posy": 6,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -2778,7 +2778,7 @@
             "posx": 359,
             "posy": 6,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -2804,7 +2804,7 @@
             "posx": 367,
             "posy": 6,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -2830,7 +2830,7 @@
             "posx": 374,
             "posy": 6,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -2856,7 +2856,7 @@
             "posx": 387,
             "posy": 6,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -2882,7 +2882,7 @@
             "posx": 404,
             "posy": 5,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -2908,7 +2908,7 @@
             "posx": 421,
             "posy": 4,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -2934,7 +2934,7 @@
             "posx": 436,
             "posy": 4,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -2960,7 +2960,7 @@
             "posx": 453,
             "posy": 5,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -2986,7 +2986,7 @@
             "posx": 469,
             "posy": 5,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -3012,7 +3012,7 @@
             "posx": 477,
             "posy": 5,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -3038,7 +3038,7 @@
             "posx": 24,
             "posy": 493,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -3064,7 +3064,7 @@
             "posx": 41,
             "posy": 493,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -3090,7 +3090,7 @@
             "posx": 57,
             "posy": 493,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -3116,7 +3116,7 @@
             "posx": 74,
             "posy": 494,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -3142,7 +3142,7 @@
             "posx": 84,
             "posy": 494,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -3168,7 +3168,7 @@
             "posx": 98,
             "posy": 494,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -3194,7 +3194,7 @@
             "posx": 115,
             "posy": 494,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -3220,7 +3220,7 @@
             "posx": 121,
             "posy": 494,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -3246,7 +3246,7 @@
             "posx": 132,
             "posy": 494,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -3272,7 +3272,7 @@
             "posx": 139,
             "posy": 494,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -3298,7 +3298,7 @@
             "posx": 155,
             "posy": 494,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -3324,7 +3324,7 @@
             "posx": 172,
             "posy": 494,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -3350,7 +3350,7 @@
             "posx": 188,
             "posy": 494,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -3376,7 +3376,7 @@
             "posx": 204,
             "posy": 494,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -3402,7 +3402,7 @@
             "posx": 219,
             "posy": 494,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -3428,7 +3428,7 @@
             "posx": 236,
             "posy": 494,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -3454,7 +3454,7 @@
             "posx": 253,
             "posy": 494,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -3480,7 +3480,7 @@
             "posx": 268,
             "posy": 494,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -3506,7 +3506,7 @@
             "posx": 278,
             "posy": 494,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -3532,7 +3532,7 @@
             "posx": 286,
             "posy": 494,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -3558,7 +3558,7 @@
             "posx": 293,
             "posy": 494,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -3584,7 +3584,7 @@
             "posx": 309,
             "posy": 494,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -3610,7 +3610,7 @@
             "posx": 326,
             "posy": 494,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -3636,7 +3636,7 @@
             "posx": 343,
             "posy": 494,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -3662,7 +3662,7 @@
             "posx": 360,
             "posy": 494,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -3688,7 +3688,7 @@
             "posx": 364,
             "posy": 494,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -3714,7 +3714,7 @@
             "posx": 373,
             "posy": 494,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -3740,7 +3740,7 @@
             "posx": 382,
             "posy": 494,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -3766,7 +3766,7 @@
             "posx": 398,
             "posy": 494,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -3792,7 +3792,7 @@
             "posx": 416,
             "posy": 494,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -3818,7 +3818,7 @@
             "posx": 412,
             "posy": 496,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -3844,7 +3844,7 @@
             "posx": 430,
             "posy": 495,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -3870,7 +3870,7 @@
             "posx": 447,
             "posy": 495,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -3896,7 +3896,7 @@
             "posx": 463,
             "posy": 495,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -3922,7 +3922,7 @@
             "posx": 469,
             "posy": 494,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,
@@ -3948,33 +3948,7 @@
             "posx": 478,
             "posy": 494,
             "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
-            "boundingbox": {
-                "vertices": null,
-                "indices": null,
-                "color": {
-                    "r": 0,
-                    "g": 0,
-                    "b": 0,
-                    "a": 0
-                },
-                "IsActive": false
-            },
-            "isactive": true,
-            "height": 17,
-            "width": 17,
-            "CachedData": {
-                "posx": 0,
-                "posy": 0
-            }
-        }
-    },
-    {
-        "sprite": {
-            "posx": 16,
-            "posy": 1,
-            "image": {},
-            "imagesource": "resources\\currentimage\\sprite.png",
+            "imagesource": "resources\\images\\wall.png",
             "boundingbox": {
                 "vertices": null,
                 "indices": null,

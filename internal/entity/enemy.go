@@ -7,10 +7,16 @@ import (
 	ebiten "github.com/hajimehoshi/ebiten/v2"
 )
 
+const (
+	Runner int = iota
+	Chaser int = iota
+)
+
 type Enemy struct {
 	Sprite   *Sprite
 	Speed    float64
 	Eyesight float64
+	Type     int
 }
 
 // movement logic update for the enemy to not get stuck in corners:
@@ -25,6 +31,7 @@ func (e *Enemy) Reset(env *Environment, metaData *common.GameMetaData) error {
 	if e.Sprite == nil {
 		e.Sprite = &Sprite{}
 	}
+	e.Type = rand.IntN(2)
 	e.Speed = 1 //float64(rand.IntN(3))
 	e.Sprite.ImageSource = "resources\\images\\enemy.png"
 	e.Sprite.PosX = float64(rand.IntN(metaData.ScreenWidth - 15))
@@ -95,15 +102,20 @@ func GetMovementDirection(enemy *Enemy, player *Player, env *Environment, screen
 	return x, y
 }
 
-func (e *Enemy) Update(metaData *common.GameMetaData, p *Player, env *Environment) error {
+func (e *Enemy) RunnerUpdate(metaData *common.GameMetaData, p *Player, env *Environment) error {
 
 	screenWidth, screenHeight := metaData.ScreenWidth-metaData.BoundryEdgeBuffer, metaData.ScreenHeight-metaData.BoundryEdgeBuffer
 
 	distanceFromPlayer := Distance(&Point{X: e.Sprite.PosX, Y: e.Sprite.PosY}, &Point{X: p.Sprite.PosX, Y: p.Sprite.PosY})
 	if distanceFromPlayer <= e.Eyesight {
 		x, y := GetMovementDirection(e, p, env, screenWidth, screenHeight)
-		e.Sprite.PosX += x
-		e.Sprite.PosY += y
+		if e.Type == 0 {
+			e.Sprite.PosX += x
+			e.Sprite.PosY += y
+		} else {
+			e.Sprite.PosX -= x
+			e.Sprite.PosY -= y
+		}
 
 		e.Sprite.CachedData = CachedData{
 			PosX: e.Sprite.PosX,
@@ -112,6 +124,17 @@ func (e *Enemy) Update(metaData *common.GameMetaData, p *Player, env *Environmen
 	}
 	if distanceFromPlayer <= 5 {
 		e.Sprite.IsActive = false
+	}
+	return nil
+}
+
+func (e *Enemy) Update(metaData *common.GameMetaData, p *Player, env *Environment) error {
+	if e.Type == 0 {
+		//Runner
+		e.RunnerUpdate(metaData, p, env)
+	} else if e.Type == 1 {
+		//Chaser
+		e.RunnerUpdate(metaData, p, env)
 	}
 	return nil
 }

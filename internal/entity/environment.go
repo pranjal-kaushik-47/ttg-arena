@@ -94,14 +94,7 @@ func (e *Environment) BuildSquareWall(X, Y, Width, Height int, enableColliders b
 					ColorA: 1,
 				},
 			},
-			Indices: []uint16{
-				0,
-				1,
-				2,
-				2,
-				3,
-				0,
-			},
+			Indices: SquareIndex,
 			Color: Color{
 				R: 255,
 				G: 0,
@@ -132,9 +125,7 @@ func (e *Environment) DrawCollider(X, Y int) {
 			DstY: float32(Y),
 		})
 
-		in := []uint16{
-			1, 0, 3, 1, 2, 3,
-		}
+		in := SquareIndex
 		p := Polygon{
 			Vertices: v,
 			Indices:  in,

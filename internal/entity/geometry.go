@@ -8,6 +8,10 @@ import (
 	"github.com/hajimehoshi/ebiten/v2/vector"
 )
 
+var (
+	SquareIndex []uint16 = []uint16{1, 0, 3, 1, 2, 3}
+)
+
 type Point struct {
 	X float64
 	Y float64

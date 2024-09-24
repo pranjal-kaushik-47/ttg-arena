@@ -31,7 +31,7 @@ func (p *Player) Reset() error {
 			{DstX: float32(p.Sprite.PosX) + 15, DstY: float32(p.Sprite.PosY) + 15, ColorR: 0, ColorG: 255, ColorB: 0, ColorA: 1},
 			{DstX: float32(p.Sprite.PosX), DstY: float32(p.Sprite.PosY) + 15, ColorR: 0, ColorG: 255, ColorB: 0, ColorA: 1},
 		},
-		Indices: []uint16{1, 0, 3, 1, 2, 3}, // square
+		Indices: SquareIndex,
 		Color:   Color{R: 255, G: 0, B: 0, A: 1},
 	}
 	return nil

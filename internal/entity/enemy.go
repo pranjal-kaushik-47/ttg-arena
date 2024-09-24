@@ -41,7 +41,7 @@ func (e *Enemy) Reset(env *Environment, metaData *common.GameMetaData) error {
 			{DstX: float32(e.Sprite.PosX) + 15, DstY: float32(e.Sprite.PosY) + 15, ColorR: 0, ColorG: 255, ColorB: 0, ColorA: 1},
 			{DstX: float32(e.Sprite.PosX), DstY: float32(e.Sprite.PosY) + 15, ColorR: 0, ColorG: 255, ColorB: 0, ColorA: 1},
 		},
-		Indices: []uint16{1, 0, 3, 1, 2, 3}, // square
+		Indices: SquareIndex,
 		Color:   Color{R: 255, G: 0, B: 0, A: 1},
 	}
 	if env.Colliding("enemy", e.Sprite.BoundingBox) {

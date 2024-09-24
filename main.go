@@ -50,33 +50,16 @@ type Game struct {
 	EnableBlockCollider bool
 }
 
-func (g *Game) Update() error {
+func (g *Game) EditLevel() error {
+	// Edit Level
+
 	if g.ChangeCursor {
 		ebiten.SetCursorMode(ebiten.CursorModeHidden)
 	} else {
 		ebiten.SetCursorMode(ebiten.CursorModeVisible)
 	}
 	x, y := ebiten.CursorPosition()
-	// fmt.Println(x, y, inpututil.IsMouseButtonJustReleased(ebiten.MouseButtonLeft))
-	CurrentEnemyCount := 0
-	for _, enemy := range g.Enemies {
-		if enemy.Sprite.IsActive {
-			CurrentEnemyCount += 1
-		}
-	}
-	if CurrentEnemyCount == 0 {
-		fmt.Println("Level Completed ", g.MetaData.Level)
-		g.MetaData.Level += 1
-		g.MetaData.TotalEnemies = g.MetaData.TotalEnemies * 2
-		g.MetaData.CurrentEnemyCount = g.MetaData.TotalEnemies
-		g.NewLevel(g.MetaData)
-	}
-	g.Player.Update(&g.MetaData, g.Environment)
-	for _, enemy := range g.Enemies {
-		enemy.Update(&g.MetaData, g.Player, g.Environment)
-	}
 
-	// Edit Level
 	if ebiten.IsKeyPressed(ebiten.KeyControl) {
 		if inpututil.IsKeyJustPressed(ebiten.KeyC) {
 			g.ChangeCursor = !g.ChangeCursor
@@ -123,9 +106,52 @@ func (g *Game) Update() error {
 	return nil
 }
 
+func (g *Game) Update() error {
+	g.EditLevel()
+	CurrentEnemyCount := 0
+	for _, enemy := range g.Enemies {
+		if enemy.Sprite.IsActive {
+			CurrentEnemyCount += 1
+		}
+	}
+	if CurrentEnemyCount == 0 {
+		fmt.Println("Level Completed ", g.MetaData.Level)
+		g.MetaData.Level += 1
+		g.MetaData.TotalEnemies = g.MetaData.TotalEnemies * 2
+		g.MetaData.CurrentEnemyCount = g.MetaData.TotalEnemies
+		g.NewLevel(g.MetaData)
+	}
+	g.Player.Update(&g.MetaData, g.Environment)
+	for _, enemy := range g.Enemies {
+		enemy.Update(&g.MetaData, g.Player, g.Environment)
+	}
+	return nil
+}
+
+func (g *Game) DisplayLogs(screen *ebiten.Image) {
+
+	msgs := []string{fmt.Sprintf("Level: %d", g.MetaData.Level), fmt.Sprintf("Sprite(D): %v", g.DrawSprite), fmt.Sprintf("Collider(Q): %v", g.DrawCollider), fmt.Sprintf("Cursor(C): %v", g.ChangeCursor), fmt.Sprintf("BlockCollider(B): %v", g.EnableBlockCollider)}
+	YLevel := 20
+	for _, msg := range msgs {
+
+		op := &text.DrawOptions{}
+		op.GeoM.Translate(24, float64(YLevel))
+		op.ColorScale.ScaleWithColor(color.White)
+
+		s, _ := text.NewGoTextFaceSource(bytes.NewReader(fonts.MPlus1pRegular_ttf))
+
+		text.Draw(screen, msg, &text.GoTextFace{
+			Source: s,
+			Size:   10,
+		}, op)
+		YLevel += 10
+	}
+}
+
 func (g *Game) Draw(screen *ebiten.Image) {
 	clr := color.RGBA{40, 44, 52, 255}
 	screen.Fill(clr)
+	g.DisplayLogs(screen)
 	if g.ChangeCursor {
 		x, y := ebiten.CursorPosition()
 		rect := ebiten.NewImage(g.BlockSize, g.BlockSize)
@@ -142,20 +168,6 @@ func (g *Game) Draw(screen *ebiten.Image) {
 	}
 	g.Environment.Draw(screen, g.MetaData, entity.Point{X: g.Player.Sprite.PosX, Y: g.Player.Sprite.PosY})
 	g.Player.Draw(screen)
-
-	// level details
-
-	msg := fmt.Sprintf("Level: %d, Sprite(D): %v, Collider(Q): %v, Cursor(C): %v, BlockCollider(B): %v", g.MetaData.Level, g.DrawSprite, g.DrawCollider, g.ChangeCursor, g.EnableBlockCollider)
-	op := &text.DrawOptions{}
-	op.GeoM.Translate(24, 20)
-	op.ColorScale.ScaleWithColor(color.White)
-
-	s, _ := text.NewGoTextFaceSource(bytes.NewReader(fonts.MPlus1pRegular_ttf))
-
-	text.Draw(screen, msg, &text.GoTextFace{
-		Source: s,
-		Size:   10,
-	}, op)
 
 }
 

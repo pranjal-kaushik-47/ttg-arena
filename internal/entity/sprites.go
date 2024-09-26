@@ -37,6 +37,8 @@ type Sprite struct {
 	CachedData CachedData
 }
 
+var RenderSpriteBoundingBox bool = false
+
 func (s *Sprite) Update() error {
 	return nil
 }
@@ -64,8 +66,9 @@ func (s *Sprite) Draw(screen *ebiten.Image) error {
 			screen.DrawImage(s.Image, opts)
 		}
 
-		// uncomment the following line to render the bounding box of the entities
-		// s.BoundingBox.Draw(screen)
+		if RenderSpriteBoundingBox {
+			s.BoundingBox.Draw(screen)
+		}
 
 	}
 	return nil

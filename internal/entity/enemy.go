@@ -1,7 +1,6 @@
 package entity
 
 import (
-	"fmt"
 	"math/rand/v2"
 	"tag-game-v2/common"
 
@@ -31,7 +30,7 @@ func (e *Enemy) Reset(env *Environment, metaData *common.GameMetaData) error {
 		e.Sprite = &Sprite{}
 	}
 	e.id = uuid.New().String()
-	e.Type = rand.IntN(2)
+	e.Type = 1  //rand.IntN(2)
 	e.Speed = 1 //float64(rand.IntN(3))
 	e.Sprite.ImageSource = "resources\\images\\enemy.png"
 	e.Sprite.PosX = float64(rand.IntN(metaData.ScreenWidth - 15))
@@ -142,7 +141,6 @@ func (e *Enemy) Update(metaData *common.GameMetaData, p *Player, env *Environmen
 
 func (e *Enemy) Draw(screen *ebiten.Image) error {
 
-	fmt.Println(len(TextMap))
 	if e.Sprite.IsActive {
 		e.Sprite.Draw(screen)
 		TextMap[e.id] = &TextMessage{

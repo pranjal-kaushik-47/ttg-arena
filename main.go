@@ -79,6 +79,7 @@ func (g *Game) EditLevel() error {
 	if ebiten.IsKeyPressed(ebiten.KeyControl) {
 		if inpututil.IsKeyJustPressed(ebiten.KeyQ) {
 			g.DrawCollider = !g.DrawCollider
+			entity.RenderSpriteBoundingBox = !entity.RenderSpriteBoundingBox
 		}
 	}
 
@@ -152,7 +153,9 @@ func (g *Game) Draw(screen *ebiten.Image) {
 		screen.DrawImage(rect, op)
 	}
 	for _, enemy := range g.Enemies {
-		enemy.Draw(screen)
+		if enemy.Sprite.IsActive {
+			enemy.Draw(screen)
+		}
 	}
 	g.Environment.Draw(screen, g.MetaData, entity.Point{X: g.Player.Sprite.PosX, Y: g.Player.Sprite.PosY})
 	g.Player.Draw(screen)

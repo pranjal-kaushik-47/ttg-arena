@@ -1,7 +1,6 @@
 package main
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"image"
@@ -10,10 +9,8 @@ import (
 	"tag-game-v2/common"
 	"tag-game-v2/internal/entity"
 
-	"github.com/hajimehoshi/ebiten/examples/resources/fonts"
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/hajimehoshi/ebiten/v2/inpututil"
-	"github.com/hajimehoshi/ebiten/v2/text/v2"
 )
 
 // TODO:
@@ -38,6 +35,7 @@ type Game struct {
 	Player      *entity.Player
 	Enemies     []*entity.Enemy
 	Environment *entity.Environment
+	ScreenText  *entity.ScreenText
 	MetaData    common.GameMetaData
 
 	// Temp Var for level editing
@@ -128,30 +126,20 @@ func (g *Game) Update() error {
 	return nil
 }
 
-func (g *Game) DisplayLogs(screen *ebiten.Image) {
+func (g *Game) UpdateDisplayText() {
 
-	msgs := []string{fmt.Sprintf("Level: %d", g.MetaData.Level), fmt.Sprintf("Sprite(D): %v", g.DrawSprite), fmt.Sprintf("Collider(Q): %v", g.DrawCollider), fmt.Sprintf("Cursor(C): %v", g.ChangeCursor), fmt.Sprintf("BlockCollider(B): %v", g.EnableBlockCollider)}
-	YLevel := 20
-	for _, msg := range msgs {
+	// msgs := []string{fmt.Sprintf("Level: %d", g.MetaData.Level), fmt.Sprintf("Sprite(D): %v", g.DrawSprite), fmt.Sprintf("Collider(Q): %v", g.DrawCollider), fmt.Sprintf("Cursor(C): %v", g.ChangeCursor), fmt.Sprintf("BlockCollider(B): %v", g.EnableBlockCollider)}
+	displayLevel := entity.TextMap["level"]
+	displayLevel.Variables = []any{g.MetaData.Level}
 
-		op := &text.DrawOptions{}
-		op.GeoM.Translate(24, float64(YLevel))
-		op.ColorScale.ScaleWithColor(color.White)
-
-		s, _ := text.NewGoTextFaceSource(bytes.NewReader(fonts.MPlus1pRegular_ttf))
-
-		text.Draw(screen, msg, &text.GoTextFace{
-			Source: s,
-			Size:   10,
-		}, op)
-		YLevel += 10
-	}
+	displayEnemy := entity.TextMap["enemy"]
+	displayEnemy.Variables = []any{len(g.Enemies)}
 }
 
 func (g *Game) Draw(screen *ebiten.Image) {
 	clr := color.RGBA{40, 44, 52, 255}
 	screen.Fill(clr)
-	g.DisplayLogs(screen)
+	g.UpdateDisplayText()
 	if g.ChangeCursor {
 		x, y := ebiten.CursorPosition()
 		rect := ebiten.NewImage(g.BlockSize, g.BlockSize)
@@ -168,6 +156,7 @@ func (g *Game) Draw(screen *ebiten.Image) {
 	}
 	g.Environment.Draw(screen, g.MetaData, entity.Point{X: g.Player.Sprite.PosX, Y: g.Player.Sprite.PosY})
 	g.Player.Draw(screen)
+	g.ScreenText.Draw(screen)
 }
 
 func (g *Game) Layout(outsideWidth, outsideHeight int) (int, int) {
@@ -196,7 +185,6 @@ func (g *Game) NewLevel(metaData common.GameMetaData) error {
 
 func main() {
 	fmt.Println("Game Starting...")
-	// sw, sh := ebiten.Monitor().Size()
 	g := common.GameMetaData{}
 
 	// screen
@@ -207,8 +195,11 @@ func main() {
 	g.BoundryEdgeBuffer = 15
 
 	game := &Game{
-		BlockSize: 10,
+		BlockSize:  10,
+		ScreenText: &entity.ScreenText{},
 	}
+	game.ScreenText.AddText("Level %v", "level", 20, 20, 10)
+	game.ScreenText.AddText("Enemies %v", "enemy", 70, 20, 30)
 	game.NewLevel(g)
 
 	// player

@@ -154,7 +154,7 @@ func GetMovementDirection(enemy *Enemy, player *Player, env *Environment, screen
 	return x, y
 }
 
-func (e *Enemy) RunnerUpdate(metaData *common.GameMetaData, p *Player, env *Environment) error {
+func (e *Enemy) MoveEnemy(metaData *common.GameMetaData, p *Player, env *Environment) error {
 
 	screenWidth, screenHeight := metaData.ScreenWidth-metaData.BoundryEdgeBuffer, metaData.ScreenHeight-metaData.BoundryEdgeBuffer
 
@@ -171,20 +171,19 @@ func (e *Enemy) RunnerUpdate(metaData *common.GameMetaData, p *Player, env *Envi
 		}
 	}
 	if distanceFromPlayer <= 5 {
-		e.Sprite.IsActive = false
-		delete(TextMap, e.id)
+		if e.Type == 0 {
+			e.Sprite.IsActive = false
+			delete(TextMap, e.id)
+		} else if e.Type == 1 {
+			p.Sprite.IsActive = false
+		}
+
 	}
 	return nil
 }
 
 func (e *Enemy) Update(metaData *common.GameMetaData, p *Player, env *Environment) error {
-	if e.Type == 0 {
-		//Runner
-		e.RunnerUpdate(metaData, p, env)
-	} else if e.Type == 1 {
-		//Chaser
-		e.RunnerUpdate(metaData, p, env)
-	}
+	e.MoveEnemy(metaData, p, env)
 	return nil
 }
 

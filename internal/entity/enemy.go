@@ -1,9 +1,11 @@
 package entity
 
 import (
+	"fmt"
 	"math/rand/v2"
 	"tag-game-v2/common"
 
+	"github.com/google/uuid"
 	ebiten "github.com/hajimehoshi/ebiten/v2"
 )
 
@@ -13,6 +15,7 @@ const (
 )
 
 type Enemy struct {
+	id       string
 	Sprite   *Sprite
 	Speed    float64
 	Eyesight float64
@@ -27,6 +30,7 @@ func (e *Enemy) Reset(env *Environment, metaData *common.GameMetaData) error {
 	if e.Sprite == nil {
 		e.Sprite = &Sprite{}
 	}
+	e.id = uuid.New().String()
 	e.Type = rand.IntN(2)
 	e.Speed = 1 //float64(rand.IntN(3))
 	e.Sprite.ImageSource = "resources\\images\\enemy.png"
@@ -120,6 +124,7 @@ func (e *Enemy) RunnerUpdate(metaData *common.GameMetaData, p *Player, env *Envi
 	}
 	if distanceFromPlayer <= 5 {
 		e.Sprite.IsActive = false
+		delete(TextMap, e.id)
 	}
 	return nil
 }
@@ -135,8 +140,18 @@ func (e *Enemy) Update(metaData *common.GameMetaData, p *Player, env *Environmen
 	return nil
 }
 
-func (p *Enemy) Draw(screen *ebiten.Image) error {
+func (e *Enemy) Draw(screen *ebiten.Image) error {
 
-	p.Sprite.Draw(screen)
+	fmt.Println(len(TextMap))
+	if e.Sprite.IsActive {
+		e.Sprite.Draw(screen)
+		TextMap[e.id] = &TextMessage{
+			Message:   "Type: %v, Pos: (%v, %v)",
+			Variables: []any{e.Type, e.Sprite.PosX, e.Sprite.PosY},
+			Position:  &Point{X: e.Sprite.PosX + 10, Y: e.Sprite.PosY},
+			Size:      10,
+		}
+	}
+
 	return nil
 }

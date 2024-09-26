@@ -132,8 +132,8 @@ func (g *Game) UpdateDisplayText() {
 	displayLevel := entity.TextMap["level"]
 	displayLevel.Variables = []any{g.MetaData.Level}
 
-	displayEnemy := entity.TextMap["enemy"]
-	displayEnemy.Variables = []any{len(g.Enemies)}
+	// displayEnemy := entity.TextMap["enemy"]
+	// displayEnemy.Variables = []any{len(g.Enemies)}
 }
 
 func (g *Game) Draw(screen *ebiten.Image) {
@@ -156,7 +156,7 @@ func (g *Game) Draw(screen *ebiten.Image) {
 	}
 	g.Environment.Draw(screen, g.MetaData, entity.Point{X: g.Player.Sprite.PosX, Y: g.Player.Sprite.PosY})
 	g.Player.Draw(screen)
-	g.ScreenText.Draw(screen)
+	entity.DrawAllText(screen)
 }
 
 func (g *Game) Layout(outsideWidth, outsideHeight int) (int, int) {
@@ -190,7 +190,7 @@ func main() {
 	// screen
 	g.ScreenHeight = 500
 	g.ScreenWidth = 500
-	g.TotalEnemies = 1
+	g.TotalEnemies = 2
 	g.CurrentEnemyCount = g.TotalEnemies
 	g.BoundryEdgeBuffer = 15
 
@@ -198,8 +198,12 @@ func main() {
 		BlockSize:  10,
 		ScreenText: &entity.ScreenText{},
 	}
-	game.ScreenText.AddText("Level %v", "level", 20, 20, 10)
-	game.ScreenText.AddText("Enemies %v", "enemy", 70, 20, 30)
+	entity.TextMap["level"] = &entity.TextMessage{
+		Message:   "Level %v",
+		Variables: []any{1},
+		Position:  &entity.Point{X: 20, Y: 10},
+		Size:      10,
+	}
 	game.NewLevel(g)
 
 	// player

@@ -25,32 +25,20 @@ type ScreenText struct {
 type textMap map[string]*TextMessage
 
 var TextMap textMap = make(textMap)
+var font *text.GoTextFaceSource
 
-func (s *ScreenText) AddText(text, tag string, X, Y float64, size float64) {
-	taxtMessage := &TextMessage{
-		Message:  text,
-		Position: &Point{X: X, Y: Y},
-		Size:     size,
-	}
-	if len(s.Messages) == 0 {
-		s.Messages = []*TextMessage{taxtMessage}
-	} else {
-		s.Messages = append(s.Messages, taxtMessage)
-	}
-	TextMap[tag] = taxtMessage
+func init() {
+	font, _ = text.NewGoTextFaceSource(bytes.NewReader(fonts.MPlus1pRegular_ttf))
 }
 
-func (s *ScreenText) Draw(screen *ebiten.Image) {
-	for _, msg := range s.Messages {
-
+func DrawAllText(screen *ebiten.Image) {
+	for _, msg := range TextMap {
 		op := &text.DrawOptions{}
 		op.GeoM.Translate(msg.Position.X, msg.Position.Y)
 		op.ColorScale.ScaleWithColor(color.White)
 
-		s, _ := text.NewGoTextFaceSource(bytes.NewReader(fonts.MPlus1pRegular_ttf))
-
 		text.Draw(screen, fmt.Sprintf(msg.Message, msg.Variables...), &text.GoTextFace{
-			Source: s,
+			Source: font,
 			Size:   msg.Size,
 		}, op)
 	}

@@ -15,7 +15,7 @@ type Wall struct {
 type Environment struct {
 	Walls []Wall `json:"walls"`
 
-	// Temp Var for level editing
+	// Temp Var for level editing : Vertex Points
 	TempPoints []Point
 }
 

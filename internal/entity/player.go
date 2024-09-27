@@ -12,10 +12,6 @@ type Player struct {
 }
 
 func (p *Player) Reset() error {
-	// image, _, err := ebitenutil.NewImageFromFile("resources\\images\\player.png")
-	// if err != nil {
-	// 	return err
-	// }
 	if p.Sprite == nil {
 		p.Sprite = &Sprite{}
 	}

@@ -22,11 +22,11 @@ import (
 
 // #### add art and animation ####
 
-// 2. hostile enemies
-// 2.5 enemy from docile to hostile
+// 2. hostile enemies // done
+// 2.5 enemy from docile to hostile // need timer but system there : inprogress
 // 3. room transition
-// 4. fog of war
-// 5. z axis movement
+// 4. fog of war // inprogress
+// 5. z axis movement (over and under objects)
 // 6. hiding
 
 // ##### add music ####

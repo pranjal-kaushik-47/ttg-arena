@@ -21,10 +21,6 @@ type Enemy struct {
 	Type     int
 }
 
-// movement logic update for the enemy to not get stuck in corners:
-// if enemy position has not changed since last frame and player is close
-// move away from last point and the player
-
 func (e *Enemy) Reset(env *Environment, metaData *common.GameMetaData) error {
 	if e.Sprite == nil {
 		e.Sprite = &Sprite{}

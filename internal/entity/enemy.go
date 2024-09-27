@@ -30,7 +30,7 @@ func (e *Enemy) Reset(env *Environment, metaData *common.GameMetaData) error {
 		e.Sprite = &Sprite{}
 	}
 	e.id = uuid.New().String()
-	e.Type = 1  //rand.IntN(2)
+	e.Type = 0  //rand.IntN(2)
 	e.Speed = 1 //float64(rand.IntN(3))
 	e.Sprite.ImageSource = "resources\\images\\enemy.png"
 	e.Sprite.PosX = float64(rand.IntN(metaData.ScreenWidth - 15))
@@ -184,6 +184,7 @@ func (e *Enemy) MoveEnemy(metaData *common.GameMetaData, p *Player, env *Environ
 
 func (e *Enemy) Update(metaData *common.GameMetaData, p *Player, env *Environment) error {
 	e.MoveEnemy(metaData, p, env)
+	// reset collider if misplaced
 	return nil
 }
 

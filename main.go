@@ -13,6 +13,9 @@ import (
 	"github.com/hajimehoshi/ebiten/v2/inpututil"
 )
 
+// Bugs:
+// wall collider getting disabled when moving toward and back
+
 // TODO:
 // 0. enemy AI (better logic ;P) : Done
 // 1. map design system : Done

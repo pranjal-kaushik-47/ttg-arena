@@ -16,7 +16,7 @@ func (p *Player) Reset() error {
 		p.Sprite = &Sprite{}
 	}
 	p.Speed = 2
-	p.Sprite.ImageSource = "resources\\images\\test2.png"
+	p.Sprite.ImageSource = "resources\\images\\player.png"
 	p.Sprite.PosX = 100
 	p.Sprite.PosY = 100
 	p.Sprite.IsActive = true

@@ -26,9 +26,13 @@ func (e *Enemy) Reset(env *Environment, metaData *common.GameMetaData) error {
 		e.Sprite = &Sprite{}
 	}
 	e.id = uuid.New().String()
-	e.Type = 0  //rand.IntN(2)
+	e.Type = rand.IntN(2)
 	e.Speed = 1 //float64(rand.IntN(3))
-	e.Sprite.ImageSource = "resources\\images\\enemy.png"
+	if e.Type == 0 {
+		e.Sprite.ImageSource = "resources\\images\\runner.png"
+	} else {
+		e.Sprite.ImageSource = "resources\\images\\chaser.png"
+	}
 	e.Sprite.PosX = float64(rand.IntN(metaData.ScreenWidth - 15))
 	e.Sprite.PosY = float64(rand.IntN(metaData.ScreenHeight - 15))
 	e.Sprite.IsActive = true
@@ -188,12 +192,12 @@ func (e *Enemy) Draw(screen *ebiten.Image) error {
 
 	if e.Sprite.IsActive {
 		e.Sprite.Draw(screen)
-		TextMap[e.id] = &TextMessage{
-			Message:   "Type: %v, Pos: (%v, %v)",
-			Variables: []any{e.Type, e.Sprite.PosX, e.Sprite.PosY},
-			Position:  &Point{X: e.Sprite.PosX + 10, Y: e.Sprite.PosY},
-			Size:      10,
-		}
+		// TextMap[e.id] = &TextMessage{
+		// 	Message:   "Type: %v, Pos: (%v, %v)",
+		// 	Variables: []any{e.Type, e.Sprite.PosX, e.Sprite.PosY},
+		// 	Position:  &Point{X: e.Sprite.PosX + 10, Y: e.Sprite.PosY},
+		// 	Size:      10,
+		// }
 	}
 
 	return nil

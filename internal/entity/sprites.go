@@ -1,9 +1,11 @@
 package entity
 
 import (
+	"fmt"
 	"image"
 	"image/color"
 	"os"
+	"tag-game-v2/common"
 
 	ebiten "github.com/hajimehoshi/ebiten/v2"
 )
@@ -25,14 +27,17 @@ type CachedData struct {
 }
 
 type Sprite struct {
-	PosX        float64       `json:"posx"`
-	PosY        float64       `json:"posy"`
-	Image       *ebiten.Image `json:"image"`
-	ImageSource string        `json:"imagesource"`
-	BoundingBox Polygon       `json:"boundingbox"`
-	IsActive    bool          `json:"isactive"`
-	Height      float64       `json:"height"`
-	Width       float64       `json:"width"`
+	PosX         float64       `json:"posx"`
+	PosY         float64       `json:"posy"`
+	Image        *ebiten.Image `json:"image"`
+	ImageSource  string        `json:"imagesource"`
+	Type         string        `json:"type"`
+	Verb         string        `json:"verb"`
+	CurrentFrame int           `json:"currentframe"`
+	BoundingBox  Polygon       `json:"boundingbox"`
+	IsActive     bool          `json:"isactive"`
+	Height       float64       `json:"height"`
+	Width        float64       `json:"width"`
 
 	CachedData CachedData
 }
@@ -44,6 +49,8 @@ func (s *Sprite) Update() error {
 }
 
 func (s *Sprite) Draw(screen *ebiten.Image) error {
+	var f *os.File
+	var err error
 	if s.IsActive {
 		opts := &ebiten.DrawImageOptions{}
 		if s.Height != 0.0 && s.Width != 0.0 {
@@ -53,9 +60,17 @@ func (s *Sprite) Draw(screen *ebiten.Image) error {
 		halfWidth := s.Width / 2
 		opts.GeoM.Translate(s.PosX-halfWidth, s.PosY-halfHight)
 		if s.ImageSource != "" {
-			f, err := os.Open(s.ImageSource)
-			if err != nil {
-				panic(err)
+			if s.Verb == "" {
+				f, err = os.Open(s.ImageSource)
+				if err != nil {
+					panic(err)
+				}
+			} else {
+				f, err = os.Open(fmt.Sprintf("resources\\animations\\%v\\%v\\%v.png", s.Type, s.Verb, (s.CurrentFrame%(common.FrameRate*10))-1))
+				if err != nil {
+					panic(err)
+				}
+
 			}
 			defer f.Close()
 			img, _, err := image.Decode(f)

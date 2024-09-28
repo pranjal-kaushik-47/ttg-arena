@@ -11,7 +11,12 @@ type GameMetaData struct {
 }
 
 const (
-	ScreenHeight      = 500
-	ScreenWidth       = 500
+	ScreenHeight      = 800
+	ScreenWidth       = 1700
 	BoundryEdgeBuffer = 15
+	FrameRate         = 3
+
+	//Animation folders
+	Walking = "walking"
+	Ideal   = "ideal"
 )

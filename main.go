@@ -139,8 +139,8 @@ func (g *Game) UpdateDisplayText() {
 	displayLevel := entity.TextMap["level"]
 	displayLevel.Variables = []any{g.MetaData.Level}
 
-	displayCE := entity.TextMap["currentE"]
-	displayCE.Variables = []any{g.MetaData.CurrentEnemyCount}
+	// displayCE := entity.TextMap["currentE"]
+	// displayCE.Variables = []any{g.MetaData.CurrentEnemyCount}
 
 	// displayEnemy := entity.TextMap["enemy"]
 	// displayEnemy.Variables = []any{len(g.Enemies)}
@@ -239,12 +239,12 @@ func main() {
 		Size:      10,
 	}
 
-	entity.TextMap["currentE"] = &entity.TextMessage{
-		Message:   "Enemies %v",
-		Variables: []any{g.CurrentEnemyCount},
-		Position:  &entity.Point{X: 20, Y: 40},
-		Size:      10,
-	}
+	// entity.TextMap["currentE"] = &entity.TextMessage{
+	// 	Message:   "Enemies %v",
+	// 	Variables: []any{g.CurrentEnemyCount},
+	// 	Position:  &entity.Point{X: 20, Y: 40},
+	// 	Size:      10,
+	// }
 	game.NewLevel(g)
 
 	// player

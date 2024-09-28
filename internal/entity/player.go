@@ -16,16 +16,18 @@ func (p *Player) Reset() error {
 		p.Sprite = &Sprite{}
 	}
 	p.Speed = 2
-	p.Sprite.ImageSource = "resources\\images\\player.png"
+	p.Sprite.ImageSource = "resources\\images\\player2.png"
+	p.Sprite.Verb = common.Walking
+	p.Sprite.Type = "player"
 	p.Sprite.PosX = 100
 	p.Sprite.PosY = 100
 	p.Sprite.IsActive = true
 	p.Sprite.BoundingBox = Polygon{
 		Vertices: []ebiten.Vertex{
 			{DstX: float32(p.Sprite.PosX), DstY: float32(p.Sprite.PosY), ColorR: 0, ColorG: 255, ColorB: 0, ColorA: 1},
-			{DstX: float32(p.Sprite.PosX) + 15, DstY: float32(p.Sprite.PosY), ColorR: 0, ColorG: 255, ColorB: 0, ColorA: 1},
-			{DstX: float32(p.Sprite.PosX) + 15, DstY: float32(p.Sprite.PosY) + 15, ColorR: 0, ColorG: 255, ColorB: 0, ColorA: 1},
-			{DstX: float32(p.Sprite.PosX), DstY: float32(p.Sprite.PosY) + 15, ColorR: 0, ColorG: 255, ColorB: 0, ColorA: 1},
+			{DstX: float32(p.Sprite.PosX) + 40, DstY: float32(p.Sprite.PosY), ColorR: 0, ColorG: 255, ColorB: 0, ColorA: 1},
+			{DstX: float32(p.Sprite.PosX) + 40, DstY: float32(p.Sprite.PosY) + 40, ColorR: 0, ColorG: 255, ColorB: 0, ColorA: 1},
+			{DstX: float32(p.Sprite.PosX), DstY: float32(p.Sprite.PosY) + 40, ColorR: 0, ColorG: 255, ColorB: 0, ColorA: 1},
 		},
 		Indices: SquareIndex,
 		Color:   Color{R: 255, G: 0, B: 0, A: 1},
@@ -72,6 +74,10 @@ func (p *Player) Update(metaData *common.GameMetaData, env *Environment) error {
 }
 
 func (p *Player) Draw(screen *ebiten.Image) error {
+	p.Sprite.CurrentFrame++
+	if p.Sprite.CurrentFrame > common.FrameRate {
+		p.Sprite.CurrentFrame = 0
+	}
 	p.Sprite.Draw(screen)
 	return nil
 }

@@ -110,13 +110,13 @@ func (g *Game) EditLevel() error {
 
 func (g *Game) Update() error {
 	g.EditLevel()
-	CurrentEnemyCount := 0
-	for _, enemy := range g.Enemies {
-		if enemy.Sprite.IsActive {
-			CurrentEnemyCount += 1
-		}
-	}
-	if CurrentEnemyCount == 0 {
+	// CurrentEnemyCount := 0
+	// for _, enemy := range g.Enemies {
+	// 	if enemy.Sprite.IsActive {
+	// 		CurrentEnemyCount += 1
+	// 	}
+	// }
+	if g.MetaData.CurrentEnemyCount == 0 {
 		fmt.Println("Level Completed ", g.MetaData.Level)
 		g.MetaData.Level += 1
 		g.MetaData.TotalEnemies = g.MetaData.TotalEnemies * 2
@@ -138,6 +138,9 @@ func (g *Game) UpdateDisplayText() {
 	// msgs := []string{fmt.Sprintf("Level: %d", g.MetaData.Level), fmt.Sprintf("Sprite(D): %v", g.DrawSprite), fmt.Sprintf("Collider(Q): %v", g.DrawCollider), fmt.Sprintf("Cursor(C): %v", g.ChangeCursor), fmt.Sprintf("BlockCollider(B): %v", g.EnableBlockCollider)}
 	displayLevel := entity.TextMap["level"]
 	displayLevel.Variables = []any{g.MetaData.Level}
+
+	displayCE := entity.TextMap["currentE"]
+	displayCE.Variables = []any{g.MetaData.CurrentEnemyCount}
 
 	// displayEnemy := entity.TextMap["enemy"]
 	// displayEnemy.Variables = []any{len(g.Enemies)}
@@ -189,6 +192,9 @@ func (g *Game) NewLevel(metaData common.GameMetaData) error {
 		enemies = append(enemies, enemy)
 	}
 	g.Enemies = enemies
+	if g.MetaData.CurrentEnemyCount == 0 {
+		g.NewLevel(metaData)
+	}
 	return nil
 }
 
@@ -218,6 +224,7 @@ func main() {
 	g.ScreenHeight = common.ScreenHeight
 	g.ScreenWidth = common.ScreenWidth
 	g.TotalEnemies = 2
+	g.Level = 1
 	g.CurrentEnemyCount = g.TotalEnemies
 	g.BoundryEdgeBuffer = common.BoundryEdgeBuffer
 
@@ -227,8 +234,15 @@ func main() {
 	}
 	entity.TextMap["level"] = &entity.TextMessage{
 		Message:   "Level %v",
-		Variables: []any{1},
+		Variables: []any{g.Level},
 		Position:  &entity.Point{X: 20, Y: 10},
+		Size:      10,
+	}
+
+	entity.TextMap["currentE"] = &entity.TextMessage{
+		Message:   "Enemies %v",
+		Variables: []any{g.CurrentEnemyCount},
+		Position:  &entity.Point{X: 20, Y: 40},
 		Size:      10,
 	}
 	game.NewLevel(g)

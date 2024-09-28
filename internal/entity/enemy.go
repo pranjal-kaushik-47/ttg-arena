@@ -27,6 +27,9 @@ func (e *Enemy) Reset(env *Environment, metaData *common.GameMetaData) error {
 	}
 	e.id = uuid.New().String()
 	e.Type = rand.IntN(2)
+	if e.Type == 1 {
+		metaData.CurrentEnemyCount -= 1
+	}
 	e.Speed = 1 //float64(rand.IntN(3))
 	if e.Type == 0 {
 		e.Sprite.ImageSource = "resources\\images\\runner.png"
@@ -172,8 +175,11 @@ func (e *Enemy) MoveEnemy(metaData *common.GameMetaData, p *Player, env *Environ
 	}
 	if distanceFromPlayer <= 5 {
 		if e.Type == 0 {
-			e.Sprite.IsActive = false
-			delete(TextMap, e.id)
+			if e.Sprite.IsActive {
+				e.Sprite.IsActive = false
+				metaData.CurrentEnemyCount -= 1
+				delete(TextMap, e.id)
+			}
 		} else if e.Type == 1 {
 			p.Sprite.IsActive = false
 		}

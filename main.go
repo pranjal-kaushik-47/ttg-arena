@@ -127,6 +127,9 @@ func (g *Game) Update() error {
 	for _, enemy := range g.Enemies {
 		enemy.Update(&g.MetaData, g.Player, g.Environment)
 	}
+	if !g.Player.Sprite.IsActive {
+		g.SwitchToLevel(1)
+	}
 	return nil
 }
 
@@ -189,16 +192,34 @@ func (g *Game) NewLevel(metaData common.GameMetaData) error {
 	return nil
 }
 
+func (g *Game) SwitchToLevel(level int) error {
+	metaData := &common.GameMetaData{
+		ScreenHeight:      common.ScreenHeight,
+		ScreenWidth:       common.ScreenWidth,
+		BoundryEdgeBuffer: common.BoundryEdgeBuffer,
+		TotalEnemies:      level * 2,
+		CurrentEnemyCount: level * 2,
+	}
+	g.Enemies = []*entity.Enemy{}
+	g.NewLevel(*metaData)
+	g.Player = &entity.Player{}
+	err := g.Player.Reset()
+	if err != nil {
+		panic(err)
+	}
+	return nil
+}
+
 func main() {
 	fmt.Println("Game Starting...")
 	g := common.GameMetaData{}
 
 	// screen
-	g.ScreenHeight = 500
-	g.ScreenWidth = 500
+	g.ScreenHeight = common.ScreenHeight
+	g.ScreenWidth = common.ScreenWidth
 	g.TotalEnemies = 2
 	g.CurrentEnemyCount = g.TotalEnemies
-	g.BoundryEdgeBuffer = 15
+	g.BoundryEdgeBuffer = common.BoundryEdgeBuffer
 
 	game := &Game{
 		BlockSize:  10,

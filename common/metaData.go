@@ -9,3 +9,9 @@ type GameMetaData struct {
 	ScreenWidth  int
 	ScreenHeight int
 }
+
+const (
+	ScreenHeight      = 500
+	ScreenWidth       = 500
+	BoundryEdgeBuffer = 15
+)
